@@ -1,0 +1,10 @@
+title: ArcSmith Docs
+email: ""
+description: "Documentação do ArcSmith publicada com GitHub Pages e Jekyll."
+baseurl: ""
+url: ""
+theme: jekyll-theme-cayman
+
+markdown: kramdown
+
+display_blog: false
