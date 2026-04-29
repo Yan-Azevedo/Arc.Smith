@@ -7,6 +7,14 @@
   "capabilities": [
     {
       "name": "CodeInterpreter"
+    },
+    {
+      "name": "WebSearch",
+      "sites": [
+        {
+          "url": "https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol"
+        }
+      ]
     }
   ]
 }

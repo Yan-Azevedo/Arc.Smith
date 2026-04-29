@@ -3,6 +3,16 @@
 
 > Documento de referência para criação, refinamento e padronização de prompts estruturados em JSON para agentes de IA no Microsoft Copilot e Copilot Studio.
 
+## Fonte de Conhecimento do Agente
+
+Use esta página como referência de conhecimento para o agente. A URL publicada no GitHub Pages é:
+
+- [https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol](https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol)
+
+O endereço principal do site também redireciona automaticamente para esta página:
+
+- [https://yan-azevedo.github.io/Arc.Smith/](https://yan-azevedo.github.io/Arc.Smith/)
+
 ---
 
 ## O que é Engenharia de Prompt
