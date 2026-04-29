@@ -74,6 +74,12 @@ arcsmith/
 
 ---
 
+## Documentação de Referência
+
+- [Como adicionar tema a um site GitHub Pages com Jekyll](Docs/github-pages-jekyll-theme.md)
+
+---
+
 ## Status do projeto
 
 | Módulo | Status |
