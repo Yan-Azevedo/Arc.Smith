@@ -79,4 +79,4 @@ publish:
     # the specified environment variable(s).
     writeToEnvironmentFile:
       publishedAppId: TEAMS_APP_PUBLISHED_APP_ID
-projectId: 6a445bcd-6eec-4623-839a-79ca32c85d9a
+projectId: 1a8bd793-ecc2-48f9-a035-afe2562cb5fd

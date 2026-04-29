@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json",
+  "version": "v1.6",
+  "name": "ArcSmith",
+  "description": "Agente especializado em workshops de adoção do Microsoft Copilot. Documenta cases de valor, engenharia de prompts e análise de dados em um único fluxo.",
+  "instructions": "$[file('instruction.txt')]",
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    },
+    {
+      "name": "WebSearch",
+      "sites": [
+        {
+          "url": "https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol"
+        }
+      ]
+    }
+  ]
+}
