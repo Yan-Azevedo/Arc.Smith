@@ -1,10 +1,7 @@
 title: ArcSmith Docs
-email: ""
 description: "Documentação do ArcSmith publicada com GitHub Pages e Jekyll."
 baseurl: "/Arc.Smith"
 url: "https://yan-azevedo.github.io"
 theme: jekyll-theme-cayman
 
 markdown: kramdown
-
-display_blog: false

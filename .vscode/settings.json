@@ -1,0 +1,9 @@
+{
+  "yaml.validate": true,
+  "yaml.schemaStore.enable": false,
+  "yaml.schemas": {
+    "./.vscode/jekyll-schema.json": [
+      "docs/_config.yml"
+    ]
+  }
+}
