@@ -39,7 +39,12 @@ Workshop de Adoção M365 Copilot
     └────────────────────────────┘
 ```
 
----
+<p align="center">
+  <img src="docs/ArcSmith1.png" width="300"/>
+</p>
+
+# ⚒️ ArcSmith
+> Forge the arc. Smith the prompt.
 
 ## Funcionalidades
 
