@@ -2,7 +2,9 @@
 
 Forge the arc. Smith the prompt.
 Agente Microsoft 365 Copilot (baseado em Declarative Agent template / M365 Agents Toolkit) que transforma entrevistas em cases estruturados e refina prompts com precisão de engenharia.
-![ArcSmith Logo](docs/assets/arcsmith.png)
+
+![ArcSmith Person](docs/Assets/ArcSmith.png)
+
 # ⚒️ ArcSmith
 > Forge the arc. Smith the prompt.
 Visão geral
