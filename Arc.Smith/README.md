@@ -1,55 +1,151 @@
-# Overview of the Declarative Agent template
+⚒️ ArcSmith — Declarative Agent (Microsoft 365 Copilot)
 
-With the declarative agent, you can build a custom version of Copilot that can be used for specific scenarios, such as for specialized knowledge, implementing specific processes, or simply to save time by reusing a set of AI prompts. For example, a grocery shopping Copilot declarative agent can be used to create a grocery list based on a meal plan that you send to Copilot.
+Forge the arc. Smith the prompt.
+Agente Microsoft 365 Copilot (baseado em Declarative Agent template / M365 Agents Toolkit) que transforma entrevistas em cases estruturados e refina prompts com precisão de engenharia.
+<p align="Left">
+  <img src="docs/assets/arcsmith.png" width="300"/>
+</p>
 
-## Get started with the template
+# ⚒️ ArcSmith
+> Forge the arc. Smith the prompt.
+Visão geral
+O ArcSmith consolida dois agentes em um único fluxo coeso:
 
-> **Prerequisites**
->
-> To run this app template in your local dev machine, you will need:
->
-> - [Node.js](https://nodejs.org/), supported versions: 18, 20, 22
-> - A [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts).
-> - [Microsoft 365 Agents Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Microsoft 365 Agents Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
-> - [Microsoft 365 Copilot license](https://learn.microsoft.com/microsoft-365-copilot/extensibility/prerequisites#prerequisites)
+Casetron → transformar entrevistas em cases de valor ✅ Integrado
+Prompt Smith → engenharia e refinamento incremental de prompts ✅ Integrado
 
-![image](https://github.com/user-attachments/assets/51a221bb-a2c6-4dbf-8009-d2aa20a1638f)
+O ArcSmith nasce do contexto de workshops de adoção do Microsoft Copilot, onde a entrega de valor tipicamente passa por duas etapas críticas:
 
-1. First, select the Microsoft 365 Agents Toolkit icon on the left in the VS Code toolbar.
-2. In the Account section, sign in with your [Microsoft 365 account](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts) if you haven't already.
-3. Select `Preview Local in Copilot (Edge)` or `Preview Local in Copilot (Chrome)` from the launch configuration dropdown.
-4. Select your declarative agent from the `Copilot` app.
-5. Ask a question to your declarative agent and it should respond based on the instructions provided.
+Capturar o que foi construído (case)
+Refinar como foi construído (prompt)
 
-## What's included in the template
 
-| Folder       | Contents                                                                                 |
-| ------------ | ---------------------------------------------------------------------------------------- |
-| `.vscode`    | VSCode files for debugging                                                               |
-| `appPackage` | Templates for the application manifest, the GPT manifest and the API specification |
-| `env`        | Environment files                                                                        |
+Contexto de uso (Workshops)
+Fluxo conceitual de utilização dentro do workshop:
+Workshop de Adoção M365 Copilot
+         │
+         ▼
+  [ Entrevista / Conversa com cliente ]
+         │
+         ▼
+     ⚒️ ArcSmith
+    ┌────────────────────────────┐
+    │  1. Captura da narrativa   │  ← herança do Casetron
+    │  2. Estruturação do case   │
+    │  3. Refinamento do prompt  │  ← herança do Prompt Smith
+    │  4. Entrega formal ao      │
+    │     cliente                │
+    └────────────────────────────┘
 
-The following files can be customized and demonstrate an example implementation to get you started.
 
-| File                               | Contents                                                                     |
-| ---------------------------------- | ---------------------------------------------------------------------------- |
-| `appPackage/declarativeAgent.json` | Define the behaviour and configurations of the declarative agent.            |
-| `appPackage/manifest.json`         | application manifest that defines metadata for your declarative agent. |
+Funcionalidades
+🎯 Arc — Construção do Case
 
-The following are Microsoft 365 Agents Toolkit specific project files. You can [visit a complete guide on Github](https://github.com/OfficeDev/TeamsFx/wiki/Teams-Toolkit-Visual-Studio-Code-v5-Guide#overview) to understand how Microsoft 365 Agents Toolkit works.
+Recebe o relato de uma entrevista ou conversa com stakeholder
+Extrai problema, contexto, solução e valor gerado
+Estrutura um case pronto para apresentação ao cliente
+Formato padronizado e replicável
 
-| File           | Contents                                                                                                                                  |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `m365agents.yml` | This is the main Microsoft 365 Agents Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions. |
+⚒️ Smith — Engenharia de Prompt
 
-## Extend the template
+Recebe instruções do usuário e retorna um Prompt-Base atualizado
+Faz edição incremental sem perda de coerência
+Saída em JSON padronizado (pt-BR)
+Reset explícito via comando de encerramento
+Resolve ambiguidades com bom senso; nunca inventa dados sensíveis
 
-- [Add conversation starters](https://learn.microsoft.com/microsoft-365-copilot/extensibility/build-declarative-agents?tabs=ttk&tutorial-step=3): Conversation starters are hints that are displayed to the user to demonstrate how they can get started using the declarative agent.
-- [Add web content](https://learn.microsoft.com/microsoft-365-copilot/extensibility/build-declarative-agents?tabs=ttk&tutorial-step=4) for the ability to search web information.
-- [Add OneDrive and SharePoint content](https://learn.microsoft.com/microsoft-365-copilot/extensibility/build-declarative-agents?tabs=ttk&tutorial-step=5) as grounding knowledge for the agent.
-- [Add Microsoft Copilot connectors content](https://learn.microsoft.com/microsoft-365-copilot/extensibility/build-declarative-agents?tabs=ttk&tutorial-step=6) to ground agent with enterprise knowledge.
-- [Add API plugins](https://learn.microsoft.com/microsoft-365-copilot/extensibility/build-declarative-agents?tabs=ttk&tutorial-step=7) for agent to interact with REST APIs.
 
-## Addition information and references
+Base técnica: Declarative Agent (M365 Agents Toolkit)
+Este projeto utiliza o Declarative Agent template, que permite construir uma versão customizada do Copilot para cenários específicos (ex.: conhecimento especializado, processos, reutilização de prompts).
+O que o template inclui (componentes principais)
 
-- [Declarative agents for Microsoft 365](https://aka.ms/teams-toolkit-declarative-agent)
+.vscode/ — arquivos de debug do VS Code
+appPackage/ — templates do application manifest, GPT manifest e API specification
+env/ — arquivos de ambiente
+
+Arquivos-chave do template
+
+appPackage/declarativeAgent.json — define comportamento e configurações do agente declarativo
+appPackage/manifest.json — manifesto do aplicativo, com metadados do agente
+m365agents.yml — arquivo principal do Microsoft 365 Agents Toolkit:
+
+define Properties
+define Stage definitions (configuração por estágios)
+
+
+
+
+Pré-requisitos (desenvolvimento local)
+Para rodar localmente, é necessário:
+
+Node.js (versões suportadas): 18, 20, 22
+Conta Microsoft 365 para desenvolvimento
+Microsoft 365 Agents Toolkit:
+
+Extensão do Visual Studio Code versão 5.0.0+ ou
+M365 Agents Toolkit CLI
+
+
+Licença do Microsoft 365 Copilot
+
+
+Como executar (preview local no Copilot)
+Passo a passo (via VS Code):
+
+Abra o projeto no VS Code
+Selecione o ícone do Microsoft 365 Agents Toolkit na barra lateral esquerda
+Em Account, faça login com sua conta Microsoft 365 (se ainda não estiver logado)
+No dropdown de configurações de execução (launch configuration), selecione:
+
+Preview Local in Copilot (Edge) ou
+Preview Local in Copilot (Chrome)
+
+
+No Copilot, selecione o declarative agent do app
+Faça perguntas ao agente — ele deve responder conforme as instruções definidas no projeto
+
+
+Arquitetura do ArcSmith
+Estrutura informada do projeto ArcSmith:
+arcsmith/
+├── agent/
+│   ├── arcsmith.json              # Definição principal do agente (M365 Toolkit)
+│   ├── arc-instructions.md        # Instruções do módulo de cases
+│   └── smith-instructions.md      # Instruções do módulo de prompts
+├── docs/
+│   ├── caso-exemplo.md            # Exemplo de case gerado
+│   └── prompt-base-exemplo.json   # Exemplo de Prompt-Base gerado
+└── README.md
+Observação: além da estrutura do ArcSmith acima, o template Declarative Agent também descreve diretórios típicos como .vscode/, appPackage/ e env/, bem como o arquivo m365agents.yml como núcleo do projeto no Agents Toolkit.
+
+
+Extensões suportadas pelo template (pontos de evolução)
+O template Declarative Agent suporta extensões do tipo:
+
+Conversation starters (hints exibidos ao usuário)
+Web content (busca de informação na web)
+OneDrive e SharePoint como grounding knowledge
+Microsoft Copilot connectors para conhecimento corporativo
+API plugins para interação com REST APIs
+
+
+Status do projeto
+
+Arc (Cases): 🔨 Em construção
+Smith (Prompts): 🔨 Em construção
+Integração M365 Toolkit: 🔨 Em construção
+Documentação de exemplos: 📋 Planejado
+
+
+Tecnologias
+
+Microsoft 365 Copilot — plataforma de execução
+Microsoft 365 Agents Toolkit — framework de construção
+JSON — formato de saída dos prompts estruturados
+pt-BR — idioma principal
+
+
+Autor
+Desenvolvido como parte de um ecossistema próprio de engenharia de agentes para workshops de adoção Microsoft Copilot.
+
+“Forje o arco da narrativa. Construa o prompt com precisão.”
