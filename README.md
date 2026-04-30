@@ -3,7 +3,7 @@
 > **Forge the arc. Smith the prompt.**  
 > Agente Microsoft 365 Copilot que transforma entrevistas em cases estruturados e refina prompts com precisão de engenharia.
 
----
+![ArcSmith Logo](docs\Assets\Initial.jpeg)
 
 ## O que é o ArcSmith?
 
@@ -16,8 +16,7 @@ O **ArcSmith** é um agente construído no Microsoft 365 Copilot (M365 Toolkit) 
 
 O ArcSmith nasce do contexto de **workshops de adoção do Microsoft Copilot**, onde a entrega de valor ao cliente passa por duas etapas críticas: **capturar** o que foi construído (case) e **refinar** como foi construído (prompt).
 
----
-
+![ArcSmith Logo](docs\Assets\ArcSmith1.png)
 ## Contexto de uso
 
 O ArcSmith é utilizado dentro de workshops de adoção de Microsoft Copilot como parte da **etapa de cases** — entregas de valor práticas para clientes que demonstram o uso real do Copilot no dia a dia organizacional.
@@ -38,10 +37,6 @@ Workshop de Adoção M365 Copilot
     │     cliente                │
     └────────────────────────────┘
 ```
-
-<p align="center">
-  <img src="https://yan-azevedo.github.io/Arc.Smith/assets/ArcSmith1.png" width="300"/>
-</p>
 
 # ⚒️ ArcSmith
 > Forge the arc. Smith the prompt.
