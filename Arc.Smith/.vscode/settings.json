@@ -1,5 +1,6 @@
 {
     "debug.onTaskErrors": "abort",
+    "workbench.colorTheme": "Tron Legacy - Encom",
     "json.schemas": [
         {
             "fileMatch": [
