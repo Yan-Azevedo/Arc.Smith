@@ -13,8 +13,20 @@
       "sites": [
         {
           "url": "https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol"
+        },
+        {
+          "url": "https://yan-azevedo.github.io/Arc.Smith/docs/WorkshopKnowledge"
         }
       ]
+    },
+    {
+      "name": "OneDriveAndSharePoint"
+    },
+    {
+      "name": "TeamsMessages"
+    },
+    {
+      "name": "Email"
     }
   ]
 }
