@@ -1,7 +1,7 @@
 # ⚒️ ArcSmith
 
 > **Forge the arc. Smith the prompt.**  
-> Agente Microsoft 365 Copilot que transforma entrevistas em cases estruturados e refina prompts com precisão de engenharia.
+> Agente Microsoft 365 Copilot que transforma entrevistas em cases estruturados e cria instruções com precisão de engenharia.
 
 ![ArcSmith Tela inicial](docs/Assets/Initial.jpeg)
 
@@ -12,30 +12,30 @@ O **ArcSmith** é um agente construído no Microsoft 365 Copilot (M365 Toolkit) 
 | Agente original | Função | Status no ArcSmith |
 |---|---|---|
 | **Casetron** | Transformar entrevistas em cases de valor | ✅ Integrado |
-| **Prompt Smith** | Engenharia e refinamento incremental de prompts | ✅ Integrado |
+| **Prompt Smith** | Engenharia e refinamento Soluções | ✅ Integrado |
 
-O ArcSmith nasce do contexto de **workshops de adoção do Microsoft Copilot**, onde a entrega de valor ao cliente passa por duas etapas críticas: **capturar** o que foi construído (case) e **refinar** como foi construído (prompt).
+O ArcSmith nasce do contexto de **adoção de AI voltado ao Microsoft Copilot**, onde gerar valor passa por duas etapas críticas: **capturar** o processo ou necessidade (case) e **desenvolver** com arquitetura a instrução (prompt).
 
 ![ArcSmith Person](docs/Assets/ArcSmith1.png)
 ## Contexto de uso
 
-O ArcSmith é utilizado dentro de workshops de adoção de Microsoft Copilot como parte da **etapa de cases** — entregas de valor práticas para clientes que demonstram o uso real do Copilot no dia a dia organizacional.
+O ArcSmith é utilizado durante o processo de adoção de Microsoft Copilot como parte da **etapa de cases** — entregas de valor práticas para clientes que demonstram o uso real do Copilot no dia a dia organizacional.
 
 ```
-Workshop de Adoção M365 Copilot
+Adoção Microsoft Copilot
          │
          ▼
   [ Entrevista / Conversa com cliente ]
          │
          ▼
      ⚒️ ArcSmith
-    ┌────────────────────────────┐
-    │  1. Captura da narrativa   │  ← herança do Casetron
-    │  2. Estruturação do case   │
-    │  3. Refinamento do prompt  │  ← herança do Prompt Smith
-    │  4. Entrega formal ao      │
-    │     cliente                │
-    └────────────────────────────┘
+    ┌──────────────────────────────┐
+    │  1. Captura da narrativa     │  ← herança do Casetron
+    │  2. Estruturação do case     │
+    │  3. Refinamento da instrução │  ← herança do Prompt Smith
+    │  4. Entrega da solução       │
+    │     ao cliente               │
+    └──────────────────────────────┘
 ```
 
 # ⚒️ ArcSmith
@@ -78,9 +78,9 @@ arcsmith/
 
 | Módulo | Status |
 |---|---|
-| Arc (Cases) | 🔨 Em construção |
-| Smith (Prompts) | 🔨 Em construção |
-| Integração M365 Toolkit | 🔨 Em construção |
+| Arc (Cases) | ✅ |
+| Smith (Prompts) | ✅ |
+| Integração M365 Toolkit | ✅ |
 | Documentação de exemplos | 📋 Planejado |
 
 ---
@@ -96,6 +96,6 @@ arcsmith/
 
 ## Autor
 
-Desenvolvido como parte de um ecossistema próprio de engenharia de agentes para workshops de adoção Microsoft Copilot.
+Desenvolvido como parte de um ecossistema próprio de engenharia de agentes para Microsoft Copilot.
 
 > *"Forje o arco da narrativa. Construa o prompt com precisão."*
