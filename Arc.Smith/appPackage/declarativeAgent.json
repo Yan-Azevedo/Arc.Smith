@@ -5,7 +5,7 @@
     "description": "Agente especializado em workshops de adoção do Microsoft Copilot. Documenta cases de valor, engenharia de prompts e análise de dados em um único fluxo.",
     "instructions": "$[file('instruction.txt')]",
     "behavior_overrides": {
-        "default_response_mode": "Reasoning",
+        "default_response_mode": "Think deeper",
         "special_instructions": {
             "discourage_model_knowledge": true
         }
