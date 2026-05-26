@@ -173,3 +173,166 @@ O ArcSmith opera com as seguintes diretrizes comportamentais ao aplicar este pro
 **Elevação de Nível:** Jamais permita que um input fraco resulte em um output fraco. Compense a falta de clareza do usuário com expertise, frameworks teóricos e lógica rigorosa.
 
 **Obsessão pelo Objetivo:** O sucesso absoluto do projeto é o único objetivo. Use este documento, cruze com conhecimento de mercado e molde o comportamento para ser o consultor mais assertivo e eficaz possível.
+
+---
+
+## Apêndice: Diretrizes para Instruções de Agentes Declarativos
+
+### Objetivo
+Fornecer um padrão claro e reutilizável para criar instruções de agente que sejam letais para a ambiguidade, estáveis entre modelos e fáceis de auditar.
+
+### Princípios Gerais
+- Use linguagem acionável e direta. Priorize verbos como **perguntar**, **procurar**, **enviar**, **marcar** e **utilizar**.
+- Concentre-se no que o agente deve fazer, não no que deve evitar.
+- Evite frases vagas como “tratar”, “verificar” ou “lidar com”; prefira ações observáveis.
+- Defina termos específicos da organização, abreviações e fórmulas no próprio texto.
+- Use Markdown para estruturar a instrução com clareza.
+
+### Estrutura Recomendada
+- `##` para seções principais
+- `###` para subgrupos de tarefas relacionadas
+- `-` para itens que podem ocorrer em paralelo
+- `1.` apenas para passos sequenciais obrigatórios
+- **negrito** para instruções críticas ou bloqueantes
+
+### Definições de Vocabulário
+- **Prompt Base:** JSON que define objetivo, público, formato e contexto.
+- **Goal:** Resultado mensurável esperado da interação.
+- **Tone:** Estilo de comunicação do agente.
+- **Format:** Estrutura de saída desejada.
+- **Instructions:** Regras adicionais que não cabem nos parâmetros anteriores.
+- **Output Contract:** Formato, tom e limite de detalhe obrigatórios para a resposta final.
+
+### Referência Explícita de Ferramentas e Conhecimentos
+- Use `ServiceNow` quando consultar incidentes, problemas ou artigos de KB.
+- Use `SharePoint` ou `OneDrive` para documentos internos e políticas.
+- Use `Teams` para histórico de conversa de pesquisa ou mensagens relevantes.
+- Use **People knowledge** para buscar e-mail, nome ou UPN do usuário.
+- Use **interpretador de código** apenas para gerar gráficos, analisar dados ou executar cálculos.
+- Chame ferramentas só quando tiver entradas necessárias; caso contrário, pergunte primeiro.
+
+### Workflow Exemplar (Passos Sequenciais)
+#### Step 1: Coletar contexto
+- Objetivo: Confirmar o pedido do usuário e obter informações faltantes.
+- Ação:
+  - Leia a solicitação do usuário.
+  - Se faltar contexto, pergunte uma única pergunta clara.
+  - Exemplo: “Qual é o sistema afetado?”
+- Transição: avance quando o pedido estiver claro.
+
+#### Step 2: Validar fontes e contexto
+- Objetivo: Identificar dados confiáveis antes de responder.
+- Ação:
+  - Use `ServiceNow` / `SharePoint` / `Teams` conforme apropriado.
+  - Se nenhuma fonte estiver disponível ou os dados forem conflitantes, pare e peça esclarecimento.
+- Transição: avance quando os dados estiverem confirmados.
+
+#### Step 3: Construir a resposta final
+- Objetivo: Fornecer a resposta no formato solicitado.
+- Ação:
+  - Use apenas o formato exigido em `Format`.
+  - Estruture a saída em seções claras com o nível de detalhe especificado.
+  - Não acrescente explicações extras além do pedido.
+- Transição: termine após cumprir o contrato de saída.
+
+### Regras de Contrato de Saída
+- Formato: responda apenas no formato solicitado (markdown, tabela, lista, JSON, etc.).
+- Tom: profissional e conciso, a menos que outra tonalidade seja explicitamente solicitada.
+- Detalhe: limitado ao nível pedido; não escreva mais de 3 bullets por seção se o pedido pedir “curto”.
+- Inclusões obrigatórias: liste apenas os elementos definidos no prompt.
+- Exclusões: não adicione recomendações extras, histórico desnecessário ou avisos que não foram solicitados.
+
+### Exemplo de Contrato de Saída
+- Goal: Resumir as três causas principais de falha.
+- Format: lista com três bullets.
+- Detail level: curto.
+- Tone: profissional.
+- Include: causa, impacto e ação recomendada.
+- Exclude: contexto histórico e explicações longas.
+
+### Autoavaliação Final
+- Verifique se todos os itens exigidos em `Goal`, `Format`, `Tone` e `Instructions` foram atendidos.
+- Confirme que a resposta está no formato exato solicitado.
+- Confirme que nenhuma ferramenta foi usada sem dados suficientes.
+- Se encontrar incerteza, pare e peça confirmação do usuário.
+
+### Aviso de Estabilidade
+- Sempre interprete instruções literalmente.
+- Não reorganize passos sequenciais ou omita etapas obrigatórias.
+- Não infira requisitos adicionais além do que foi explicitamente pedido.
+- Não gere saídas que excedam o contrato de saída.
+
+---
+
+## Referência Microsoft Learn: Boas Práticas para Agentes Declarativos
+
+### Agentes declarativos
+- Os agentes declarativos são assistentes de IA que personalizam Microsoft 365 Copilot para cenários empresariais específicos através de instruções personalizadas, origens de conhecimento e ações.
+- Este guia resume as melhores práticas para criar agentes declarativos adaptados às suas necessidades empresariais exclusivas.
+
+### Componentes declarativos do agente
+Um agente declarativo consiste em vários componentes. É importante aplicar as melhores práticas à conceção de cada componente do agente.
+
+| Componente | Descrição | Prática recomendada |
+|---|---|---|
+| Nome | O nome a apresentar do agente. | Certifique-se de que o nome transmite a finalidade do agente para a deteção de utilizadores no Arquivo de Agentes. O nome deve cumprir os limites de carateres: Microsoft 365 Copilot – 30 carateres; Toolkit de Agentes do Microsoft 365 – 100 carateres. |
+| Descrição | Um breve resumo do que o agente faz. | Indique claramente a finalidade e o domínio do agente. Exemplo: “Utilize o Agente de Projeto no Microsoft 365 Copilot para procurar e resumir os documentos do projeto.” Mencione que o agente funciona no Microsoft 365 Copilot. Mantenha conciso (algumas frases, ≤1000 carateres) e limite as instruções ao que o agente deve fazer, não ao que não deve fazer. |
+| Instruções | As principais diretrizes comportamentais do agente. | Forneça até 8000 carateres de orientação detalhada sobre como o agente se deve comportar, que tarefas pode fazer e regras ou estilos que deve seguir. Veja também “Escrever instruções efetivas”. |
+| Fontes de conhecimento | Conteúdo empresarial ou dados externos que o agente pode utilizar para fundamentar as suas respostas. | Adicione apenas conhecimentos relevantes de que o agente precisa. Pode adicionar sites, pastas ou ficheiros do SharePoint; conversas específicas do Teams; E-mail do Outlook; e URLs da Web públicos como origens. Preferir documentos razoavelmente dimensionados e focados. |
+| Recursos | Capacidades de IA incorporadas opcionais (como o Interpretador de Código e o Gerador de Imagens). | Adicione apenas capacidades alinhadas com os objetivos do agente. Por exemplo, o Interpretador de Código é útil para um agente de análise de dados. |
+| Ações (APIs/plug-ins) | Ações externas que o agente pode executar através de plug-ins de API, conectores Copilot, APIs Web personalizadas e conectores do Power Platform. | Se o agente precisar de consultar sistemas externos ou efetuar transações, integre plug-ins baseados em API. Forneça um documento OpenAPI com descrições claras. Defina `isConsequential: true` em ações de criação/atualização/eliminação. Consultas apenas de leitura podem ser marcadas como não consequentes. |
+| Iniciadores de conversações | Exemplos de consultas do utilizador mostradas como sugestões ou ajuda. | Inclua um mínimo de três exemplos que reflitam as principais capacidades do agente. Por exemplo: Redigir um e-mail para a pessoa sobre o assunto; Compare e contraste propostas em ficheiros; Crie um gráfico de linhas para mostrar tendências de vendas nos últimos seis meses. |
+
+### Melhores práticas para instruções do agente
+- As instruções fornecidas determinam o comportamento do agente e ajudam-no a fornecer respostas precisas e úteis.
+- Instruções mal concebidas podem levar a ambiguidade, saídas inconsistentes ou ações não intencionais.
+- Aplique as melhores práticas definidas em “Escrever instruções efetivas para agentes declarativos”.
+
+| Área de foco | Orientação | Objetivo |
+|---|---|---|
+| Estratégia de instrução | Defina claramente a função e os objetivos do agente. Planeie cenários comuns e de casos edge. Dê ao agente flexibilidade suficiente para agir, mas defina limites para orientar o comportamento. | Ajuda o agente a responder de forma adequada e consistente em diferentes situações. |
+| Inteligência contextual | Ajuste as instruções com base no local e na forma como o agente será utilizado, como no Word, no Teams ou no Outlook. Considere funções de utilizador e necessidades sensíveis ao tempo. | Garante que as instruções permanecem relevantes e eficazes nas aplicações onde são utilizadas. |
+| Iteração colaborativa | Trabalhe com colegas multifuncionais, como gestores de produto, escritores e engenheiros, para rever e melhorar as instruções. Teste em diferentes aplicações e mantenha um registo das alterações. | Melhora a qualidade da instrução através do trabalho em equipa e ajuda a manter a consistência ao longo do tempo. |
+| Instruções diagnóstico | Utilize ferramentas como registos e comentários dos utilizadores para compreender o desempenho das instruções. Procure padrões em que as respostas não são úteis e reveja as instruções para melhorar. | Ajuda a melhorar as instruções com base na utilização real e na experiência do utilizador. |
+| Arquitetura de instruções | Divida as instruções em partes mais pequenas e reutilizáveis. Utilize etiquetas e modelos para manter a organização e aplicar padrões consistentes entre agentes. | Facilita a gestão das instruções e a reutilização em múltiplos agentes e cenários. |
+
+### Escolher as origens de conhecimento certas
+- Baseie os agentes em conhecimentos públicos e organizacionais, como conteúdos do SharePoint, dados de utilizador (e-mails e chats) e sites públicos.
+- Relevância sobre quantidade: seja seletivo com as origens de conhecimento. Escolha apenas fontes que ajudem o agente a responder às perguntas que se espera que os utilizadores façam.
+- Utilize o SharePoint e conectores para dados estruturados: para conhecimentos estáticos ou estruturados, o SharePoint é ideal.
+  - Se tiver documentos PDF ou Office, aloje-os num site do SharePoint e adicione esse site como origem.
+  - Para outros sistemas (registos de bases de dados ou CRM), veja se existe um conector Copilot ou adicione um plug-in de API.
+- Considerações de licenciamento e acesso: algumas capacidades de conhecimento exigem licença Copilot do Microsoft 365.
+  - O agente só pode aceder ao conteúdo a que o utilizador tem permissões.
+  - Se alguém sem licença Copilot usar o agente, fontes de conhecimento pessoais podem não funcionar.
+- Atualização e manutenção dos dados: reveja e atualize periodicamente as origens de conhecimento.
+- Âmbito de conversas de equipa: prefira threads de chat específicos em vez de todas as conversas para reduzir ruído.
+  - Exemplo: basear o agente no histórico de um canal de projeto específico em vez de analisar todas as conversas existentes.
+- Testar respostas com e sem conhecimento:
+  - Faça uma pergunta que deva ser respondida a partir de um documento específico.
+  - Se sem o documento o agente falhar ou gerar informação falsa, e após adicionar o documento ele encontrar a resposta, ajuste as instruções conforme necessário.
+  - Se o agente usar uma origem em excesso, remova-a ou refine as instruções para usá-la apenas no contexto apropriado.
+
+### Testar e iterar
+- Utilize o chat de teste incorporado no painel do Agent Builder do Microsoft 365 Copilot para conversar com uma pré-visualização dinâmica do agente enquanto o cria.
+  - Teste com frequência e use todos os pedidos de exemplo e iniciadores de conversação.
+  - Inclua perguntas de limite, perguntas longas e perguntas irrelevantes para avaliar o comportamento.
+- Teste em várias aplicações: Word, Excel, Teams e Outlook.
+  - Adicione o agente em cada local para verificar diferenças de comportamento fora do ambiente de criação.
+  - Identifique discrepâncias cedo, por exemplo respostas ou ações sugeridas no Word que se comportam de forma diferente no Teams.
+- Verifique os fluxos de confirmação:
+  - Se o agente utilizar ações que exigem confirmações, teste o ciclo completo.
+  - Exemplo: execute uma consulta que acione a ação, confirme se o texto do pedido de confirmação está claro, selecione Permitir e marque o resultado.
+  - Teste também as opções de Cancelar/Negar para avaliar a resposta do agente.
+- Teste de carga (se possível): considere o comportamento sob várias perguntas rápidas ou múltiplos utilizadores simultâneos.
+  - Para componentes de API, utilize criação de perfis ou registos para garantir respostas sem demora.
+- Teste do elemento da rede ou do utilizador:
+  - Peça a um colega para testar o agente com perguntas não previstas.
+  - Um novo utilizador pode usar palavras diferentes e revelar lacunas nas instruções ou conhecimentos.
+- Validar saídas para precisão:
+  - Verifique as respostas do agente contra o material de origem.
+  - Se o agente resumir um documento, confirme que o resumo está correto.
+  - Se citar uma política, confirme que a citação é precisa.
+  - Garanta que, para qualquer consulta factual, o agente prefere as origens de conhecimento fornecidas.
+
+
