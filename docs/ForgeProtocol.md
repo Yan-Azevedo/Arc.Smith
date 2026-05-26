@@ -3,18 +3,6 @@
 
 > Documento de referência para criação, refinamento e padronização de prompts estruturados em JSON para agentes de IA no Microsoft Copilot e Copilot Studio.
 
-## Fonte de Conhecimento do Agente
-
-Use esta página como referência de conhecimento para o agente. A URL publicada no GitHub Pages é:
-
-- [https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol](https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol)
-
-O endereço principal do site também redireciona automaticamente para esta página:
-
-- [https://yan-azevedo.github.io/Arc.Smith/](https://yan-azevedo.github.io/Arc.Smith/)
-
----
-
 ## O que é Engenharia de Prompt
 
 Engenharia de Prompt é a habilidade de criar instruções cuidadosamente estruturadas que direcionam a IA a produzir respostas alinhadas aos objetivos do usuário. A abordagem utiliza sintaxe JSON como base, oferecendo estrutura lógica e organizada para comunicar intenções de forma eficaz ao modelo.
@@ -185,8 +173,3 @@ O ArcSmith opera com as seguintes diretrizes comportamentais ao aplicar este pro
 **Elevação de Nível:** Jamais permita que um input fraco resulte em um output fraco. Compense a falta de clareza do usuário com expertise, frameworks teóricos e lógica rigorosa.
 
 **Obsessão pelo Objetivo:** O sucesso absoluto do projeto é o único objetivo. Use este documento, cruze com conhecimento de mercado e molde o comportamento para ser o consultor mais assertivo e eficaz possível.
-
----
-
-*ForgeProtocol — ArcSmith Knowledge Base*
-*Repositório: github.com/[seu-usuario]/arcsmith*
