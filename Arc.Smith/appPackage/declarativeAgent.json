@@ -1,8 +1,15 @@
 {
-    "version": "v1.6",
+    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.7/schema.json",
+    "version": "v1.7",
     "name": "ArcSmith",
     "description": "Agente especializado em workshops de adoção do Microsoft Copilot. Documenta cases de valor, engenharia de prompts e análise de dados em um único fluxo.",
     "instructions": "$[file('instruction.txt')]",
+    "behavior_overrides": {
+        "default_response_mode": "Reasoning",
+        "special_instructions": {
+            "discourage_model_knowledge": true
+        }
+    },
     "capabilities": [
         {
             "name": "CodeInterpreter"
@@ -30,6 +37,5 @@
             "id": "ai-plugin",
             "file": "ai-plugin.json"
         }
-    ],
-    "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json"
+    ]
 }
