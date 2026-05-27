@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="docs/Assets/ArcSmith.png" alt="ArcSmith" width="320"/>
-</p>
-
 <h1 align="center">⚒️ ArcSmith</h1>
 
 <p align="center">
