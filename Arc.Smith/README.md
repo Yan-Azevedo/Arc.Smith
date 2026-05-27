@@ -1,8 +1,8 @@
-<p align="center">
-  <img src="../docs/Assets/ArcSmith.png" alt="ArcSmith" width="320"/>
-</p>
-
 <h1 align="center">⚒️ ArcSmith — Documentação Técnica</h1>
+
+<p align="center">
+  <img src="../docs/Assets/ArcSmith.png" alt="ArcSmith" width="80%"/>
+</p>
 
 <p align="center">
   <strong>Forge the arc. Smith the prompt.</strong><br>
@@ -34,7 +34,7 @@ O ArcSmith é um **Declarative Agent** do Microsoft 365 Copilot que utiliza arqu
 | `m365agents.yml` | Configuração Toolkit | Lifecycle stages do Agents Toolkit |
 
 <p align="center">
-  <img src="../docs/Assets/ArcSmith1.png" alt="ArcSmith em operação" width="500"/>
+  <img src="../docs/Assets/ArcSmith2.png" alt="ArcSmith — visão técnica" width="500"/>
 </p>
 
 ---
@@ -147,10 +147,6 @@ Gera Prompt-Base estruturado em JSON. Cada mensagem é tratada como edição inc
 - Nome do Agente
 - Título resumido
 - Descrição
-
-<p align="center">
-  <img src="../docs/Assets/ArcSmith2.png" alt="ArcSmith — visão técnica" width="500"/>
-</p>
 
 ### Code Interpreter
 
