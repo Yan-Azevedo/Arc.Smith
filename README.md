@@ -1,6 +1,10 @@
 <h1 align="center">⚒️ ArcSmith</h1>
 
 <p align="center">
+  <img src="docs/Assets/ArcSmith1.png" alt="ArcSmith em ação" width="500"/>
+</p>
+
+<p align="center">
   <strong>Forge the arc. Smith the prompt.</strong><br>
   Declarative Agent para Microsoft 365 Copilot — especializado no desenvolvimento estruturado de soluções de IA.
 </p>
@@ -38,7 +42,7 @@ O ArcSmith nasceu da consolidação de dois agentes autorais anteriores em um ú
 A consolidação eliminou a fragmentação entre identificação de oportunidades e construção técnica, permitindo que ambas as etapas operem dentro de um mesmo agente com contexto compartilhado e arquitetura unificada.
 
 <p align="center">
-  <img src="docs/Assets/ArcSmith1.png" alt="ArcSmith em ação" width="500"/>
+  <img src="docs/Assets/Initial.jpeg" alt="ArcSmith em ação" width="500"/>
 </p>
 
 ---
@@ -118,7 +122,7 @@ Executa Python em sandbox para apoiar análise de dados, validação de JSONs e 
 - Criação de arquivos para entrega ao usuário final
 
 <p align="center">
-  <img src="docs/Assets/ArcSmith2.png" alt="ArcSmith — visão técnica" width="500"/>
+  <img src="docs/Assets/ArcSmith1.png" alt="ArcSmith em ação" width="500"/>
 </p>
 
 ### 🌐 Microsoft Learn MCP (Model Context Protocol)
