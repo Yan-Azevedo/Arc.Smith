@@ -1,150 +1,323 @@
-⚒️ ArcSmith — Declarative Agent (Microsoft 365 Copilot)
+<p align="center">
+  <img src="../docs/Assets/ArcSmith.png" alt="ArcSmith" width="320"/>
+</p>
 
-Forge the arc. Smith the prompt.
-Agente Microsoft 365 Copilot (baseado em Declarative Agent template / M365 Agents Toolkit) que transforma entrevistas em cases estruturados e refina prompts com precisão de engenharia.
+<h1 align="center">⚒️ ArcSmith — Documentação Técnica</h1>
 
-![ArcSmith Person](../docs/Assets/ArcSmith.png)
+<p align="center">
+  <strong>Forge the arc. Smith the prompt.</strong><br>
+  Documentação técnica do Declarative Agent ArcSmith, construído sobre o Microsoft 365 Agents Toolkit.
+</p>
 
-# ⚒️ ArcSmith
-> Forge the arc. Smith the prompt.
-Visão geral
-O ArcSmith consolida dois agentes em um único fluxo coeso:
+<p align="center">
+  <img src="https://img.shields.io/badge/Schema-v1.7-orange?style=flat-square" alt="Schema v1.7"/>
+  <img src="https://img.shields.io/badge/Version-1.4.0-success?style=flat-square" alt="Version"/>
+  <img src="https://img.shields.io/badge/Language-pt--BR-yellow?style=flat-square" alt="Language"/>
+</p>
 
-Casetron → transformar entrevistas em cases de valor ✅ Integrado
-Prompt Smith → engenharia e refinamento incremental de prompts ✅ Integrado
+> Este documento é voltado a desenvolvedores e mantenedores do projeto. Para visão geral, acesse o [README principal](../README.md).
 
-O ArcSmith nasce do contexto de workshops de adoção do Microsoft Copilot, onde a entrega de valor tipicamente passa por duas etapas críticas:
+---
 
-Capturar o que foi construído (case)
-Refinar como foi construído (prompt)
+## Visão técnica
 
+O ArcSmith é um **Declarative Agent** do Microsoft 365 Copilot que utiliza arquitetura híbrida de grounding multi-fonte com retrieval aumentado, sem dependência de vector store ou pipeline RAG técnico.
 
-Contexto de uso (Workshops)
-Fluxo conceitual de utilização dentro do workshop:
-Workshop de Adoção M365 Copilot
-         │
-         ▼
-  [ Entrevista / Conversa com cliente ]
-         │
-         ▼
-     ⚒️ ArcSmith
-    ┌────────────────────────────┐
-    │  1. Captura da narrativa   │  ← herança do Casetron
-    │  2. Estruturação do case   │
-    │  3. Refinamento do prompt  │  ← herança do Prompt Smith
-    │  4. Entrega formal ao      │
-    │     cliente                │
-    └────────────────────────────┘
+### Componentes principais
 
+| Componente | Tipo | Propósito |
+|---|---|---|
+| `declarativeAgent.json` | Manifest principal | Define capabilities, knowledge sources e behavior overrides |
+| `instruction.txt` | Instruções operacionais | Comportamento do agente (limite 8000 caracteres) |
+| `manifest.json` | Manifesto M365 | Metadados, ícones, developer info |
+| `ai-plugin.json` | Plugin MCP | Definição das ferramentas do Microsoft Learn MCP |
+| `m365agents.yml` | Configuração Toolkit | Lifecycle stages do Agents Toolkit |
 
-Funcionalidades
-🎯 Arc — Construção do Case
+<p align="center">
+  <img src="../docs/Assets/ArcSmith1.png" alt="ArcSmith em operação" width="500"/>
+</p>
 
-Recebe o relato de uma entrevista ou conversa com stakeholder
-Extrai problema, contexto, solução e valor gerado
-Estrutura um case pronto para apresentação ao cliente
-Formato padronizado e replicável
+---
 
-⚒️ Smith — Engenharia de Prompt
+## Schema e capabilities
 
-Recebe instruções do usuário e retorna um Prompt-Base atualizado
-Faz edição incremental sem perda de coerência
-Saída em JSON padronizado (pt-BR)
-Reset explícito via comando de encerramento
-Resolve ambiguidades com bom senso; nunca inventa dados sensíveis
+### Versão do schema
 
+```
+v1.7 — Declarative Agent
+```
 
-Base técnica: Declarative Agent (M365 Agents Toolkit)
-Este projeto utiliza o Declarative Agent template, que permite construir uma versão customizada do Copilot para cenários específicos (ex.: conhecimento especializado, processos, reutilização de prompts).
-O que o template inclui (componentes principais)
+### Capabilities ativas
 
-.vscode/ — arquivos de debug do VS Code
-appPackage/ — templates do application manifest, GPT manifest e API specification
-env/ — arquivos de ambiente
+```json
+"capabilities": [
+  { "name": "CodeInterpreter" },
+  {
+    "name": "WebSearch",
+    "sites": [
+      { "url": "https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol" },
+      { "url": "https://yan-azevedo.github.io/Arc.Smith/SolutionKnowledge" }
+    ]
+  },
+  { "name": "OneDriveAndSharePoint" },
+  { "name": "TeamsMessages" },
+  { "name": "Email" }
+]
+```
 
-Arquivos-chave do template
+### Behavior overrides
 
-appPackage/declarativeAgent.json — define comportamento e configurações do agente declarativo
-appPackage/manifest.json — manifesto do aplicativo, com metadados do agente
-m365agents.yml — arquivo principal do Microsoft 365 Agents Toolkit:
+```json
+"behavior_overrides": {
+  "default_response_mode": "Think deeper",
+  "special_instructions": {
+    "discourage_model_knowledge": true
+  }
+}
+```
 
-define Properties
-define Stage definitions (configuração por estágios)
+| Configuração | Efeito |
+|---|---|
+| `default_response_mode: "Think deeper"` | Força raciocínio profundo por padrão (Chain of Thought) |
+| `discourage_model_knowledge: true` | Prioriza knowledge curado sobre conhecimento genérico do modelo |
 
+### Actions (MCP)
 
+```json
+"actions": [
+  {
+    "id": "ai-plugin",
+    "file": "ai-plugin.json"
+  }
+]
+```
 
+O `ai-plugin.json` define a conexão com o **Microsoft Learn MCP Server** (`https://learn.microsoft.com/api/mcp`), expondo as ferramentas `microsoft_docs_search` e `microsoft_docs_fetch`.
 
-Pré-requisitos (desenvolvimento local)
-Para rodar localmente, é necessário:
+---
 
-Node.js (versões suportadas): 18, 20, 22
-Conta Microsoft 365 para desenvolvimento
-Microsoft 365 Agents Toolkit:
+## Arquitetura de conhecimento
 
-Extensão do Visual Studio Code versão 5.0.0+ ou
-M365 Agents Toolkit CLI
+### Camada 1 — Conhecimento curado (estático)
 
+Bases metodológicas autorais publicadas via GitHub Pages, consumidas via WebSearch capability.
 
-Licença do Microsoft 365 Copilot
+| URL | Conteúdo |
+|---|---|
+| [ForgeProtocol](https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol) | Engenharia de prompt — estrutura JSON, parâmetros, boas práticas |
+| [SolutionKnowledge](https://yan-azevedo.github.io/Arc.Smith/SolutionKnowledge) | Metodologia completa de construção de soluções de IA |
 
+### Camada 2 — Retrieval dinâmico (externo)
 
-Como executar (preview local no Copilot)
-Passo a passo (via VS Code):
+Microsoft Learn MCP Server — acesso em tempo real à documentação oficial Microsoft.
 
-Abra o projeto no VS Code
-Selecione o ícone do Microsoft 365 Agents Toolkit na barra lateral esquerda
-Em Account, faça login com sua conta Microsoft 365 (se ainda não estiver logado)
-No dropdown de configurações de execução (launch configuration), selecione:
+### Camada 3 — Grounding nativo (tenant)
 
-Preview Local in Copilot (Edge) ou
-Preview Local in Copilot (Chrome)
+Acesso direto ao contexto do usuário via capabilities nativas: OneDrive, SharePoint, Teams, Email.
 
+---
 
-No Copilot, selecione o declarative agent do app
-Faça perguntas ao agente — ele deve responder conforme as instruções definidas no projeto
+## Módulos operacionais
 
+### Arc — Documentação de Cases
 
-Arquitetura do ArcSmith
-Estrutura informada do projeto ArcSmith:
-arcsmith/
-├── agent/
-│   ├── arcsmith.json              # Definição principal do agente (M365 Toolkit)
-│   ├── arc-instructions.md        # Instruções do módulo de cases
-│   └── smith-instructions.md      # Instruções do módulo de prompts
-├── docs/
-│   ├── caso-exemplo.md            # Exemplo de case gerado
-│   └── prompt-base-exemplo.json   # Exemplo de Prompt-Base gerado
-└── README.md
-Observação: além da estrutura do ArcSmith acima, o template Declarative Agent também descreve diretórios típicos como .vscode/, appPackage/ e env/, bem como o arquivo m365agents.yml como núcleo do projeto no Agents Toolkit.
+Interpreta transcrições de conversas com stakeholders, identifica cases, estrutura no template institucional e classifica complexidade (Baixa 🟢 / Média 🟡 / Alta 🔴 / Projeto 💼).
 
+### Smith — Engenharia de Prompt
 
-Extensões suportadas pelo template (pontos de evolução)
-O template Declarative Agent suporta extensões do tipo:
+Gera Prompt-Base estruturado em JSON. Cada mensagem é tratada como edição incremental.
 
-Conversation starters (hints exibidos ao usuário)
-Web content (busca de informação na web)
-OneDrive e SharePoint como grounding knowledge
-Microsoft Copilot connectors para conhecimento corporativo
-API plugins para interação com REST APIs
+**Schema do output:**
+```json
+{
+  "Parameters": {
+    "Temperature": "[0.0–1.0]",
+    "Goal": "[Objetivo detalhado]",
+    "Tone": "[Tom]",
+    "Format": "[Formato]",
+    "Use Case": "[Cenário]",
+    "Context": "[Contexto]",
+    "Instructions": "[Diretrizes]",
+    "Output": "[Formato de saída do agente criado]"
+  }
+}
+```
 
+**Campos apresentados separadamente em texto na primeira resposta:**
+- Nome do Agente
+- Título resumido
+- Descrição
 
-Status do projeto
+<p align="center">
+  <img src="../docs/Assets/ArcSmith2.png" alt="ArcSmith — visão técnica" width="500"/>
+</p>
 
-Arc (Cases): 🔨 Em construção
-Smith (Prompts): 🔨 Em construção
-Integração M365 Toolkit: 🔨 Em construção
-Documentação de exemplos: 📋 Planejado
+### Code Interpreter
 
+Python em sandbox para validação de JSONs, análise de planilhas (CSV/TSV) e geração de artefatos.
 
-Tecnologias
+**Limitação conhecida:** Arquivos `.xlsx` e `.docx` apresentam bug em Declarative Agents (reportado desde nov/2025). Workaround: converter para CSV antes de anexar.
 
-Microsoft 365 Copilot — plataforma de execução
-Microsoft 365 Agents Toolkit — framework de construção
-JSON — formato de saída dos prompts estruturados
-pt-BR — idioma principal
+---
 
+## Comandos especiais
 
-Autor
-Desenvolvido como parte de um ecossistema próprio de engenharia de agentes para workshops de adoção Microsoft Copilot.
+| Comando | Efeito |
+|---|---|
+| `encerrar` | Reseta o módulo Smith, retornando Prompt-Base zerado |
+| `novo case` | Inicia novo fluxo no módulo Arc, descartando contexto anterior |
 
-“Forje o arco da narrativa. Construa o prompt com precisão.”
+---
+
+## Identificação de módulo ativo
+
+| Input do usuário | Módulo ativado |
+|---|---|
+| Texto de reunião, transcrição ou anotações | Arc |
+| Instruções de agente ou solicitação de JSON | Smith |
+| Arquivo de dados ou pedido de análise | Code Interpreter |
+| Ambiguidade | Pergunta ao usuário qual módulo usar |
+
+---
+
+## Versionamento
+
+### Schema de versão (Semantic Versioning adaptado)
+
+| Tipo de mudança | Incremento |
+|---|---|
+| Adição de capability ou feature maior | MINOR ou MAJOR |
+| Ajuste de instruções ou configuração | PATCH |
+| Correção de bug | PATCH |
+
+### Procedimento de Provision
+
+1. Editar arquivos necessários
+2. Incrementar `version` no `manifest.json`
+3. Executar **Provision** pelo painel Lifecycle do M365 Agents Toolkit
+4. Validar funcionamento no Copilot M365
+
+> **Importante:** Toda mudança requer incremento de versão. O M365 rejeita Provisions com versão igual ou inferior à existente no tenant.
+
+---
+
+## Pipeline de atualização do conhecimento
+
+Knowledge sources publicadas via GitHub Pages atualizam **em tempo real** — sem necessidade de re-provisionamento.
+
+```
+Editar .md em docs/  →  git push  →  GitHub Pages rebuild (1-2min)  →  ArcSmith consome versão atualizada
+```
+
+---
+
+## Pré-requisitos de desenvolvimento
+
+- **Node.js** versões 18, 20 ou 22
+- **Microsoft 365 Agents Toolkit** — VS Code extension 5.0.0+ (ou CLI equivalente)
+- **Licença Microsoft 365 Copilot**
+- **Conta Microsoft 365** com permissões de desenvolvimento
+
+---
+
+## Execução local
+
+### Preview no Copilot
+
+1. Abra o projeto no VS Code
+2. Selecione o ícone do Microsoft 365 Agents Toolkit
+3. Em **Account**, faça login com a conta Microsoft 365
+4. No dropdown de launch, selecione **Preview Local in Copilot (Edge)** ou **(Chrome)**
+5. O ArcSmith abre no Copilot conectado ao tenant
+
+> **Nota:** Declarative Agents não suportam debug local tradicional (`localhost`). O Preview Local executa diretamente no tenant.
+
+---
+
+## Configuração do MCP Server
+
+O Microsoft Learn MCP está configurado em `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "learnmicro": {
+      "type": "http",
+      "url": "https://learn.microsoft.com/api/mcp"
+    }
+  }
+}
+```
+
+Ferramentas expostas via `ai-plugin.json`:
+- `microsoft_docs_search` — busca semântica
+- `microsoft_docs_fetch` — recuperação de páginas completas
+
+---
+
+## Limitações conhecidas
+
+| Limitação | Status | Workaround |
+|---|---|---|
+| Leitura nativa de `.xlsx` e `.docx` falha no Code Interpreter | Bug Microsoft (nov/2025) | Converter para CSV antes de anexar |
+| Embedded Knowledge não aceita `.md` | Limitação plataforma | Usar GitHub Pages + WebSearch capability |
+| Instruções limitadas a 8000 caracteres | Limitação Toolkit | Distribuir conhecimento entre instructions + knowledge sources |
+| WebSearch limitado a 4 URLs | Limitação plataforma | Consolidar conteúdo em documentos maiores |
+
+---
+
+## Extensões suportadas (pontos de evolução futura)
+
+- Conversation starters
+- Web content / WebSearch (em uso)
+- OneDrive e SharePoint (em uso)
+- Microsoft Copilot connectors (Graph Connectors)
+- API plugins customizados
+- Embedded knowledge (aguardando suporte a `.md`)
+
+---
+
+## Distribuição
+
+### Tenant próprio (modo dev)
+
+Usuários do mesmo tenant podem receber o agente via compartilhamento direto no Microsoft 365 Agents Toolkit (Lifecycle → Compartilhar).
+
+### Múltiplos tenants (futuro)
+
+Publicação na Microsoft Marketplace ou Microsoft 365 Admin Center exige aprovação adicional e revisão técnica completa.
+
+---
+
+## Stack técnica resumida
+
+```
+Microsoft 365 Copilot
+    └── Declarative Agent (Schema v1.7)
+        ├── Instructions (≤8000 chars)
+        ├── Capabilities
+        │   ├── CodeInterpreter
+        │   ├── WebSearch (GitHub Pages)
+        │   ├── OneDriveAndSharePoint
+        │   ├── TeamsMessages
+        │   └── Email
+        ├── Actions
+        │   └── ai-plugin → Microsoft Learn MCP
+        └── Behavior Overrides
+            ├── default_response_mode: Think deeper
+            └── discourage_model_knowledge: true
+```
+
+---
+
+## Autor e licença
+
+**Desenvolvido por Yan Azevedo**
+
+Projeto autoral fundamentado em metodologia própria construída a partir de prática profissional contínua. Consulte [LICENSE.md](../LICENSE.md) para termos de uso (CC BY-NC-ND 4.0).
+
+---
+
+<p align="center">
+  <em>"Forje o arco da narrativa. Construa o prompt com precisão."</em>
+</p>
