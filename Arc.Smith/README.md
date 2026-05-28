@@ -269,7 +269,6 @@ Ferramentas expostas via `ai-plugin.json`:
 - OneDrive e SharePoint (em uso)
 - Microsoft Copilot connectors (Graph Connectors)
 - API plugins customizados
-- Embedded knowledge (aguardando suporte a `.md`)
 
 ---
 
