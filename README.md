@@ -65,24 +65,24 @@ O ArcSmith não utiliza RAG técnico tradicional — opera com **arquitetura hí
         ┌───────────────────┼───────────────────┐
         │                   │                   │
         ▼                   ▼                   ▼
-┌───────────────┐  ┌────────────────┐  ┌────────────────┐
+┌───────────────┐  ┌────────────────┐  ┌─────────────────┐
 │  MÓDULO ARC   │  │ MÓDULO SMITH   │  │ CODE INTERPRETER│
-│               │  │                │  │                │
+│               │  │                │  │                 │
 │  Documenta    │  │  Engenharia    │  │  Análise Python │
 │  cases a      │  │  de prompts    │  │  e geração de   │
 │  partir de    │  │  e agentes IA  │  │  artefatos      │
-│  transcrições │  │                │  │                │
-└───────────────┘  └────────────────┘  └────────────────┘
+│  transcrições │  │                │  │                 │
+└───────────────┘  └────────────────┘  └─────────────────┘
 
 CONHECIMENTO ESTRUTURADO (Grounding sofisticado)
 ┌────────────────────────────────────────────────────────────┐
 │                                                            │
-│  📘 ForgeProtocol         📗 SolutionKnowledge             │
+│  📘 ForgeProtocol         📗 SolutionKnowledge            │
 │  Engenharia de prompt     Metodologia autoral de           │
 │  (GitHub Pages)           construção de soluções           │
 │                           (GitHub Pages)                   │
 │                                                            │
-│  🌐 Microsoft Learn MCP   🏢 Tenant M365 Native            │
+│  🌐 Microsoft Learn MCP   🏢 Tenant M365 Native           │
 │  Documentação técnica     OneDrive, SharePoint,            │
 │  oficial em tempo real    Teams, Email                     │
 │                                                            │
