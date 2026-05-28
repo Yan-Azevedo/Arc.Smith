@@ -264,16 +264,7 @@ Após o Provision, o ArcSmith estará disponível em [m365.cloud.microsoft](http
 | ForgeProtocol Knowledge | ✅ Publicado |
 | SolutionKnowledge Knowledge | ✅ Publicado |
 | Grounding M365 (Teams, OneDrive, Email) | ✅ Habilitado |
-| Templates de entrega | 🔨 Em desenvolvimento |
-
----
-
-## Evolução futura
-
-- Templates institucionais de cases para aprovação do usuário final
-- Templates de entrega final (manual do usuário + documentação técnica)
-- Migração para Embedded Knowledge quando Microsoft suportar `.md`
-- Arquitetura RAG técnica (vector store + embeddings) quando base de cases ultrapassar volume justificável
+| Templates de entrega | ✅ Habilitado |
 
 ---
 
