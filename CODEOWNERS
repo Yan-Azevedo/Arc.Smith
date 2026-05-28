@@ -1,0 +1,28 @@
+# ═══════════════════════════════════════════════════════════════
+#  CODEOWNERS — ArcSmith
+# ═══════════════════════════════════════════════════════════════
+#
+#  Este arquivo define os proprietários dos arquivos do repositório.
+#  Qualquer Pull Request que altere arquivos listados aqui exigirá
+#  aprovação explícita do owner antes de poder ser mesclado.
+#
+#  Filosofia de proteção:
+#  Apenas arquivos de identidade autoral e documentação principal
+#  são protegidos. Arquivos do agente (instruções, knowledge,
+#  configurações) permanecem livres para que outros possam
+#  customizar conforme suas necessidades.
+#
+#  Documentação oficial:
+#  https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-configuration/customizing-your-repository/about-code-owners
+#
+# ═══════════════════════════════════════════════════════════════
+
+
+# ───────────────────────────────────────────────────────────────
+# DOCUMENTAÇÃO PRINCIPAL E IDENTIDADE AUTORAL
+# ───────────────────────────────────────────────────────────────
+
+/README.md                          @Yan-Azevedo
+/LICENSE.md                         @Yan-Azevedo
+/CHANGELOG.md                       @Yan-Azevedo
+/Arc.Smith/README.md                @Yan-Azevedo
