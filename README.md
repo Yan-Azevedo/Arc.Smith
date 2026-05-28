@@ -12,7 +12,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Microsoft%20365-Copilot-blue?style=flat-square&logo=microsoft" alt="M365 Copilot"/>
   <img src="https://img.shields.io/badge/Schema-v1.7-orange?style=flat-square" alt="Schema v1.7"/>
-  <img src="https://img.shields.io/badge/Version-1.4.0-success?style=flat-square" alt="Version"/>
+  <img src="https://img.shields.io/badge/Version-1.6.0-success?style=flat-square" alt="Version"/>
   <img src="https://img.shields.io/badge/Language-pt--BR-yellow?style=flat-square" alt="Language"/>
   <img src="https://img.shields.io/badge/Status-Operacional-brightgreen?style=flat-square" alt="Status"/>
   <img src="https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey?style=flat-square" alt="License"/>
