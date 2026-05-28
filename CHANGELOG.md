@@ -11,6 +11,27 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [1.7.0]
+
+### Adicionado
+- **Instruções do agente atualizadas** para reconhecer e operar com os templates de entrega — agora o ArcSmith sabe quando e como acionar Template_Cases e Template_Entrega.
+- Nova seção "Templates de Entrega — Geração de Documentos" nas instruções, orientando consulta aos knowledge sources, solicitação de dados ao usuário e geração de arquivos `.docx`.
+- Novos comandos especiais:
+  - `gerar discovery` — inicia geração do documento de Formalização Discovery (Template_Cases).
+  - `gerar entrega` — inicia geração do Guia de Criação do Agente (Template_Entrega).
+- Identificação de ação ampliada para cobrir os cinco fluxos do agente: Arc, Smith, Code Interpreter, Template_Cases e Template_Entrega.
+- **Proteção do repositório** — criação do arquivo `.github/CODEOWNERS` definindo propriedade dos arquivos de identidade autoral (README, LICENSE, CHANGELOG).
+- **Branch Protection** ativada na branch `main`, exigindo Pull Requests e aprovação de Code Owners para alterações.
+
+### Modificado
+- Reposicionamento textual do agente de "workshop de adoção" para "desenvolvimento estruturado de soluções de IA".
+- Seção de identidade e regra fundamental enxugada para acomodar as novas capacidades dentro do limite de 8000 caracteres.
+
+### Removido
+- Detalhamento dos critérios de complexidade nas instruções (Baixa, Média, Alta, Projeto) — agora consultado dinamicamente no SolutionKnowledge, evitando duplicação e liberando caracteres.
+
+---
+
 ## [1.6.0]
 
 ### Adicionado
@@ -117,6 +138,7 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+[1.7.0]: https://github.com/Yan-Azevedo/Arc.Smith/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/Yan-Azevedo/Arc.Smith/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/Yan-Azevedo/Arc.Smith/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/Yan-Azevedo/Arc.Smith/compare/v1.3.0...v1.4.0
