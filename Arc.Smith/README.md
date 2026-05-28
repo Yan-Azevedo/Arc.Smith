@@ -11,7 +11,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Schema-v1.7-orange?style=flat-square" alt="Schema v1.7"/>
-  <img src="https://img.shields.io/badge/Version-1.4.0-success?style=flat-square" alt="Version"/>
+  <img src="https://img.shields.io/badge/Version-1.6.0-success?style=flat-square" alt="Version"/>
   <img src="https://img.shields.io/badge/Language-pt--BR-yellow?style=flat-square" alt="Language"/>
 </p>
 
