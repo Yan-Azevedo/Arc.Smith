@@ -33,10 +33,6 @@ O ArcSmith é um **Declarative Agent** do Microsoft 365 Copilot que utiliza arqu
 | `ai-plugin.json` | Plugin MCP | Definição das ferramentas do Microsoft Learn MCP |
 | `m365agents.yml` | Configuração Toolkit | Lifecycle stages do Agents Toolkit |
 
-<p align="center">
-  <img src="../docs/Assets/ArcSmith2.png" alt="ArcSmith — visão técnica" width="80%"/>
-</p>
-
 ---
 
 ## Schema e capabilities
@@ -97,6 +93,10 @@ O `ai-plugin.json` define a conexão com o **Microsoft Learn MCP Server** (`http
 ---
 
 ## Arquitetura de conhecimento
+
+<p align="center">
+  <img src="../docs/Assets/ArcSmith2.png" alt="ArcSmith — visão técnica" width="80%"/>
+</p>
 
 ### Camada 1 — Conhecimento curado (estático)
 

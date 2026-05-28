@@ -1,0 +1,184 @@
+═══════════════════════════════════════════════════════════════
+  REGRAS DE FORMATAÇÃO E USO DESTE TEMPLATE
+═══════════════════════════════════════════════════════════════
+
+PROPÓSITO
+Este template estrutura o documento de Formalização Discovery, 
+contendo todos os cases identificados em uma sessão de levantamento. 
+O documento final é entregue ao cliente para análise e posterior 
+seleção dos cases que seguirão para construção.
+
+FORMATO DE SAÍDA
+Quando o usuário solicitar a geração do documento, criar arquivo 
+.docx aplicando as regras visuais abaixo.
+
+TIPOGRAFIA
+- Fonte principal: Calibri
+- Tamanho corpo de texto: 11pt
+- Tamanho título principal (H1): 18pt, negrito
+- Tamanho títulos de seção (H2): 14pt, negrito
+- Tamanho subtítulos (H3): 12pt, negrito
+- Espaçamento entre linhas: 1.15
+- Alinhamento do corpo: justificado
+- Alinhamento de títulos: à esquerda
+
+CORES NEUTRAS
+- Título principal: #1F4E79 (azul escuro corporativo)
+- Títulos de case: #2E75B6 (azul médio)
+- Subtítulos dentro dos cases: #333333 (cinza escuro)
+- Corpo do texto: #000000 (preto)
+- Cabeçalho de tabelas: fundo #1F4E79, texto branco
+- Linhas alternadas em tabelas: #F2F2F2 (cinza claro)
+
+INDICADORES DE COMPLEXIDADE (cores fixas)
+- Baixa: #70AD47 (verde)
+- Média: #FFC000 (amarelo)
+- Alta: #ED7D31 (laranja)
+- Projeto: #C00000 (vermelho)
+
+REGRAS GERAIS DE LAYOUT
+- Margens: 2,5cm em todos os lados
+- Quebra de página entre cases quando houver mais de 2 por sessão
+- Cabeçalho do documento centralizado
+- Tabelas com bordas finas
+- Linhas separadoras entre seções principais
+
+PLACEHOLDERS DINÂMICOS
+Todos os campos entre colchetes [ ] devem ser preenchidos 
+dinamicamente pelo ArcSmith com base nas informações fornecidas 
+pelo usuário no momento da geração.
+
+═══════════════════════════════════════════════════════════════
+  ESTRUTURA DO DOCUMENTO
+═══════════════════════════════════════════════════════════════
+
+
+[TÍTULO PRINCIPAL — H1, centralizado]
+
+Formalização Discovery – [Departamento] | [Cliente]
+
+
+───────────────────────────────────────────────────────────────
+RESUMO EXECUTIVO
+───────────────────────────────────────────────────────────────
+
+Total de cases identificados: [número]
+
+Distribuição por complexidade:
+- Baixa: [número]
+- Média: [número]
+- Alta: [número]
+- Projeto: [número]
+
+
+═══════════════════════════════════════════════════════════════
+[TÍTULO DO CASE — H2]
+CASE 01 — [Nome do Case]
+═══════════════════════════════════════════════════════════════
+
+Apresentador: [Nome do entrevistado]
+Área: [Departamento ou time]
+
+
+Caso apresentado
+[Descrição objetiva do processo, situação ou contexto relatado 
+pelo entrevistado durante a sessão. Deve refletir o cenário real, 
+não interpretações.]
+
+
+Problema encontrado
+[Gargalo, dor ou ineficiência principal identificada. Foco em 
+fatos concretos: onde o processo trava, onde gera retrabalho, 
+onde causa erros ou consome tempo excessivo.]
+
+
+Objetivo
+[O que a solução deve alcançar. Resultado esperado de forma 
+clara e mensurável quando possível.]
+
+
+Problema que soluciona
+[Impacto direto da solução sobre o problema identificado. 
+Conecta a solução proposta com a dor relatada.]
+
+
+Valor da construção
+[Benefício concreto e mensurável. Quando possível, incluir 
+estimativas de tempo economizado, redução de erros, aumento 
+de capacidade ou outros ganhos tangíveis.]
+
+
+Complexidade: [Baixa / Média / Alta / Projeto]
+[Justificativa de 1 a 3 frases explicando a classificação, 
+considerando fatores técnicos, operacionais e de adoção.]
+
+
+═══════════════════════════════════════════════════════════════
+CASE 02 — [Nome do Case]
+═══════════════════════════════════════════════════════════════
+
+Apresentador: [Nome do entrevistado]
+Área: [Departamento ou time]
+
+
+Caso apresentado
+[Conteúdo]
+
+
+Problema encontrado
+[Conteúdo]
+
+
+Objetivo
+[Conteúdo]
+
+
+Problema que soluciona
+[Conteúdo]
+
+
+Valor da construção
+[Conteúdo]
+
+
+Complexidade: [Baixa / Média / Alta / Projeto]
+[Justificativa]
+
+
+═══════════════════════════════════════════════════════════════
+  [Repetir estrutura para cada case identificado na sessão]
+═══════════════════════════════════════════════════════════════
+
+
+───────────────────────────────────────────────────────────────
+RESPONSÁVEL PELO DISCOVERY
+───────────────────────────────────────────────────────────────
+
+Consultor: [Nome do consultor responsável]
+Cargo: [Cargo do consultor]
+Empresa: [Empresa que conduziu a sessão]
+
+
+═══════════════════════════════════════════════════════════════
+  INSTRUÇÕES PARA O ARCSMITH NO MOMENTO DA GERAÇÃO
+═══════════════════════════════════════════════════════════════
+
+1. Solicitar ao usuário, caso não tenha sido informado:
+   - Nome do cliente
+   - Departamento da sessão
+   - Lista de cases identificados (com apresentador e área de cada um)
+   - Dados do consultor responsável (nome, cargo, empresa)
+
+2. Aplicar a estrutura acima preenchendo todos os placeholders.
+
+3. Calcular automaticamente o resumo executivo:
+   - Contar total de cases
+   - Contar quantos cases de cada complexidade
+
+4. Gerar o arquivo .docx aplicando as regras de formatação 
+   definidas no início deste template.
+
+5. Apresentar o arquivo gerado para download ao usuário.
+
+6. Não incluir comentários, instruções de uso ou meta-informações 
+   no documento final entregue ao cliente.

@@ -42,7 +42,7 @@ O ArcSmith nasceu da consolidação de dois agentes autorais anteriores em um ú
 A consolidação eliminou a fragmentação entre identificação de oportunidades e construção técnica, permitindo que ambas as etapas operem dentro de um mesmo agente com contexto compartilhado e arquitetura unificada.
 
 <p align="center">
-  <img src="docs/Assets/Initial.jpeg" alt="ArcSmith em ação" width="80%"/>
+  <img src="docs/Assets/Initial.jpeg" alt="ArcSmith em ação" width="100%"/>
 </p>
 
 ---
