@@ -1,0 +1,303 @@
+═══════════════════════════════════════════════════════════════
+  REGRAS DE FORMATAÇÃO E USO DESTE TEMPLATE
+═══════════════════════════════════════════════════════════════
+
+PROPÓSITO
+Este template estrutura o Guia de Criação do Agente — documento 
+entregue ao cliente para que ele recrie e utilize a solução de IA 
+no próprio ambiente. O documento é didático, completo e voltado 
+a pessoas leigas, cobrindo desde a explicação da solução até o 
+passo a passo de criação e uso.
+
+FORMATO DE SAÍDA
+Quando o usuário solicitar a geração do documento, criar arquivo 
+.docx aplicando as regras visuais abaixo.
+
+PLATAFORMAS COBERTAS
+O agente pode ser criado em diferentes plataformas. Identifique 
+qual o usuário utilizará e adapte o passo a passo:
+- Copilot Chat (básico) — agentes simples
+- Copilot / Agent Builder (M365) — mais recursos e knowledge
+- Copilot Studio — agentes robustos com fluxos e integrações
+
+ORIENTAÇÃO VIA MICROSOFT LEARN MCP
+Para o passo a passo de criação, consultar o Microsoft Learn MCP 
+em tempo real, garantindo que as instruções reflitam a interface 
+e os recursos atuais da plataforma escolhida. Nunca inventar 
+caminhos ou botões — validar na documentação oficial.
+
+TIPOGRAFIA
+- Fonte principal: Calibri
+- Tamanho corpo de texto: 11pt
+- Título principal (H1): 18pt, negrito
+- Títulos de seção (H2): 14pt, negrito
+- Subtítulos (H3): 12pt, negrito
+- Espaçamento entre linhas: 1.15
+- Alinhamento do corpo: justificado
+- Alinhamento de títulos: à esquerda
+
+CORES NEUTRAS
+- Título principal: #1F4E79 (azul escuro corporativo)
+- Títulos de seção: #2E75B6 (azul médio)
+- Subtítulos: #333333 (cinza escuro)
+- Corpo do texto: #000000 (preto)
+- Cabeçalho de tabelas: fundo #1F4E79, texto branco
+- Linhas alternadas em tabelas: #F2F2F2 (cinza claro)
+
+BLOCO DE CONTEÚDO PARA COPIAR (CRÍTICO)
+Sempre que o documento apresentar conteúdo que o usuário deve 
+copiar e colar literalmente (instruções do agente, prompts de 
+orientação, descrição do agente), formatar esse conteúdo como 
+bloco de citação destacado:
+- Fundo cinza claro (#F2F2F2)
+- Texto em itálico
+- Fonte levemente menor (10pt)
+- Recuo à esquerda
+- Borda lateral esquerda em azul (#2E75B6)
+Isso separa visualmente o "conteúdo para copiar" do texto 
+explicativo do documento.
+
+PLACEHOLDERS DINÂMICOS
+Campos entre colchetes [ ] são preenchidos dinamicamente pelo 
+ArcSmith com base nas informações da solução construída.
+
+═══════════════════════════════════════════════════════════════
+  ESTRUTURA DO DOCUMENTO
+═══════════════════════════════════════════════════════════════
+
+
+[TÍTULO PRINCIPAL — H1]
+
+[Cliente] – [Nome do Agente] | [Função do Agente]
+
+
+───────────────────────────────────────────────────────────────
+1. OBJETIVO DESTE DOCUMENTO
+───────────────────────────────────────────────────────────────
+
+[Parágrafo explicando o que este guia orienta e quais garantias 
+a solução entrega. Listar os principais benefícios e o propósito 
+da criação do agente, em linguagem acessível.]
+
+Exemplo de estrutura:
+Este documento orienta a criação do agente [Nome] voltado a 
+[função], garantindo:
+- [Garantia 1]
+- [Garantia 2]
+- [Garantia 3]
+- [Garantia 4]
+
+
+───────────────────────────────────────────────────────────────
+2. FINALIDADE DO AGENTE
+───────────────────────────────────────────────────────────────
+
+[Explicação clara do que o agente faz, para que serve e qual 
+problema resolve. Linguagem didática.]
+
+O que o agente utiliza:
+- [Fonte ou recurso 1]
+- [Fonte ou recurso 2]
+
+Importante — o que o agente NÃO faz:
+[Deixar explícito os limites do agente e que ele apoia, mas não 
+substitui, a decisão ou validação humana. Reforçar uso responsável 
+de IA conforme diretrizes Microsoft.]
+
+
+───────────────────────────────────────────────────────────────
+3. LÓGICA DE INTERAÇÃO COM O AGENTE
+───────────────────────────────────────────────────────────────
+
+[Esta seção é crítica para agentes que seguem uma sequência lógica 
+para atingir o resultado. Descrever passo a passo como o usuário 
+interage com o agente.]
+
+Para cada etapa da interação, estruturar assim:
+
+Etapa 1 – [Nome da etapa]
+- O que o usuário deve fazer: [ação do usuário]
+- O que o agente faz: [processamento do agente]
+- Retorno esperado: [o que o agente devolve]
+- Ação do usuário: [confirmação ou próximo passo, se houver]
+
+Etapa 2 – [Nome da etapa]
+[mesma estrutura]
+
+[Repetir para todas as etapas do fluxo do agente. Se o agente 
+for de interação livre, descrever os principais tipos de uso 
+em vez de etapas rígidas.]
+
+
+───────────────────────────────────────────────────────────────
+4. CRIAÇÃO DO AGENTE — PASSO A PASSO
+───────────────────────────────────────────────────────────────
+
+[Identificar a plataforma escolhida e apresentar o passo a passo 
+correspondente. Consultar o Microsoft Learn MCP para garantir 
+que os caminhos estejam atualizados.]
+
+Plataforma utilizada: [Copilot Chat / Agent Builder / Copilot Studio]
+
+Etapa 1 – Acessar a plataforma
+[Caminho de acesso atualizado conforme documentação oficial]
+
+Etapa 2 – Iniciar a criação do agente
+[Passo a passo de início]
+
+Etapa 3 – Definir nome e descrição
+Nome do agente:
+[bloco para copiar — cinza, itálico]
+[Nome exato do agente]
+
+Descrição do agente (copiar e colar exatamente):
+[bloco para copiar — cinza, itálico]
+[Descrição exata do agente]
+
+
+───────────────────────────────────────────────────────────────
+5. INSTRUÇÕES DO AGENTE
+───────────────────────────────────────────────────────────────
+
+Cole integralmente o conteúdo abaixo no campo de Instruções do 
+agente:
+
+[BLOCO PARA COPIAR — formatação de citação: fundo cinza, itálico, 
+fonte menor, recuo e borda lateral azul]
+
+[Instruções completas do agente — JSON estruturado ou markdown, 
+conforme a solução construída. Manter exatamente como gerado pelo 
+módulo Smith.]
+
+
+───────────────────────────────────────────────────────────────
+6. CONEXÃO COM DOCUMENTOS E FONTES DE CONHECIMENTO
+───────────────────────────────────────────────────────────────
+
+6.1 Fontes internas (prioridade)
+[Documentos que devem ser adicionados como knowledge do agente. 
+Indicar nome e finalidade de cada um.]
+- [Documento 1] — [finalidade]
+- [Documento 2] — [finalidade]
+
+6.2 Fontes externas
+[Escopo de busca web, se aplicável. Caso o agente não deva 
+consultar fontes externas, deixar explícito.]
+
+
+───────────────────────────────────────────────────────────────
+7. CAPACIDADES DO AGENTE
+───────────────────────────────────────────────────────────────
+
+Ative as seguintes capacidades:
+- [Capacidade 1 — ex.: Criar documentos, gráficos e código]
+- [Capacidade 2]
+
+Essas capacidades permitem:
+- [Benefício prático 1]
+- [Benefício prático 2]
+
+
+───────────────────────────────────────────────────────────────
+8. PROMPTS SUGERIDOS
+───────────────────────────────────────────────────────────────
+
+8.1 Prompts padrão (configuráveis no agente)
+[Prompts curtos que podem ser configurados como sugestões iniciais 
+do agente. Aplicável a todos os agentes. Geram valor imediato e 
+orientam o primeiro uso.]
+- "[Prompt sugerido 1]"
+- "[Prompt sugerido 2]"
+- "[Prompt sugerido 3]"
+- "[Prompt sugerido 4]"
+
+8.2 Prompt de orientação (casos específicos)
+[Esta camada aplica-se APENAS a agentes robustos onde as instruções 
+sozinhas não garantem o resultado completo. Nestes casos, um prompt 
+longo de orientação é fornecido para guiar a execução.]
+
+[Avaliar caso a caso se o agente necessita deste prompt. Quando 
+necessário, orientar o usuário sobre quando e como utilizá-lo — 
+seja na configuração inicial ou a cada uso, conforme a natureza 
+da solução.]
+
+Quando aplicável, apresentar:
+
+Orientação de uso: [explicar quando usar este prompt — uso 
+recorrente a cada execução ou configuração única inicial]
+
+[BLOCO PARA COPIAR — formatação de citação: fundo cinza, itálico, 
+fonte menor, recuo e borda lateral azul]
+
+[Prompt longo de orientação completo]
+
+
+───────────────────────────────────────────────────────────────
+9. BOAS PRÁTICAS DE USO
+───────────────────────────────────────────────────────────────
+
+[Checklist de uso responsável, adaptado à solução]
+- Sempre confirmar as informações apresentadas pelo agente
+- Validar manualmente itens críticos
+- Utilizar apenas fontes e documentos oficiais
+- Tratar o resultado como apoio, nunca como decisão final
+- Registrar evidências quando aplicável
+
+
+───────────────────────────────────────────────────────────────
+10. RESULTADO ESPERADO
+───────────────────────────────────────────────────────────────
+
+Ao final, a organização terá:
+- [Resultado 1 — ex.: agente previsível e auditável]
+- [Resultado 2 — ex.: redução de tempo operacional]
+- [Resultado 3 — ex.: processo padronizado]
+- [Resultado 4 — ex.: clareza de responsabilidade com validação humana]
+
+
+───────────────────────────────────────────────────────────────
+11. RESPONSABILIDADE E USO RESPONSÁVEL
+───────────────────────────────────────────────────────────────
+
+A responsabilidade final é sempre humana. O agente opera conforme 
+as regras documentadas, mas não assume responsabilidade por decisões 
+ou validações finais, em conformidade com os princípios de uso 
+responsável de IA da Microsoft.
+
+
+═══════════════════════════════════════════════════════════════
+  INSTRUÇÕES PARA O ARCSMITH NO MOMENTO DA GERAÇÃO
+═══════════════════════════════════════════════════════════════
+
+1. Identificar a plataforma onde o agente será criado (Copilot 
+   Chat, Agent Builder ou Copilot Studio) e adaptar a seção 4.
+
+2. Consultar o Microsoft Learn MCP para validar os caminhos de 
+   criação atualizados da plataforma escolhida. Nunca inventar 
+   interface ou botões.
+
+3. Solicitar ao usuário, caso não tenha sido informado:
+   - Nome e função do agente
+   - Cliente
+   - Plataforma de criação
+   - Finalidade e lógica de interação
+   - Instruções do agente (do módulo Smith)
+   - Fontes de conhecimento e capacidades
+   - Se o agente é robusto e precisa do prompt de orientação (8.2)
+
+4. Aplicar formatação de citação (cinza, itálico, menor, com borda 
+   lateral) em TODO conteúdo destinado a cópia: descrição, 
+   instruções do agente e prompt de orientação.
+
+5. Avaliar se a seção 8.2 (prompt de orientação) é necessária. 
+   Incluir apenas para agentes robustos. Para agentes simples, 
+   manter apenas a seção 8.1.
+
+6. Para agentes de fluxo sequencial, detalhar a seção 3 etapa por 
+   etapa. Para agentes de interação livre, descrever os principais 
+   tipos de uso.
+
+7. Gerar o arquivo .docx aplicando todas as regras de formatação.
+
+8. Não incluir comentários, instruções de uso ou meta-informações 
+   no documento final entregue ao cliente.
