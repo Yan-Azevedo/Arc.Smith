@@ -1,6 +1,6 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.7/schema.json",
-    "version": "v1.7",
+    "version": "v1.8",
     "name": "ArcSmith",
     "description": "Agente especializado em workshops de adoção do Microsoft Copilot. Documenta cases de valor, engenharia de prompts e análise de dados em um único fluxo.",
     "instructions": "$[file('instruction.txt')]",
