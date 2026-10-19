@@ -15,23 +15,6 @@
             "name": "CodeInterpreter"
         },
         {
-            "name": "WebSearch",
-            "sites": [
-                {
-                    "url": "https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol"
-                },
-                {
-                    "url": "https://yan-azevedo.github.io/Arc.Smith/SolutionKnowledge"
-                },
-                {
-                    "url": "https://yan-azevedo.github.io/Arc.Smith/Template_Cases"
-                },
-                {
-                    "url": "https://yan-azevedo.github.io/Arc.Smith/Template_Entrega"
-                }
-            ]
-        },
-        {
             "name": "OneDriveAndSharePoint"
         },
         {
@@ -45,6 +28,32 @@
         {
             "id": "ai-plugin",
             "file": "ai-plugin.json"
+        }
+    ],
+    "agent_skills": [
+        {
+            "folder": "skills/arc-cases"
+        },
+        {
+            "folder": "skills/smith-prompt"
+        },
+        {
+            "folder": "skills/copilot-chat"
+        },
+        {
+            "folder": "skills/copilot-m365-agent-builder"
+        },
+        {
+            "folder": "skills/copilot-m365-toolkit"
+        },
+        {
+            "folder": "skills/copilot-studio"
+        },
+        {
+            "folder": "skills/documentacao"
+        },
+        {
+            "folder": "skills/gerador-pacote"
         }
     ]
 }

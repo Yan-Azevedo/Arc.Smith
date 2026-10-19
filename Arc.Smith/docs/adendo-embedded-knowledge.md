@@ -1,0 +1,1 @@
+Skills e embedded files não podem ser combinados no preview (Microsoft Learn, declarative-agent-skills, Known issues). Quando a Microsoft liberar, avaliar migrar a metodologia dos recursos das skills para EmbeddedKnowledge. Verificar a doc antes.
