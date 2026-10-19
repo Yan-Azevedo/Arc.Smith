@@ -194,8 +194,8 @@ Nenhum arquivo de destino passa de 20.000 caracteres. Os maiores são: metodolog
 
 | Skill | Arquivo (stub existente) | O que falta |
 |---|---|---|
-| copilot-chat | capacidades-limites.md | O que o Copilot Chat faz e não faz sem agente: recursos nativos, limites de contexto e de arquivos, diferenças de licença (com e sem Microsoft 365 Copilot). |
-| copilot-chat | instrucoes-e-prompts.md | Instruções personalizadas e prompts reutilizáveis (Prompt Gallery, salvar prompts). A parte genérica de engenharia de prompt pode vir do ForgeProtocol. |
+| copilot-chat | capacidades-limites.md | Criação de agentes por usuários do Copilot Chat sem licença: o que é gratuito (instruções, sites públicos), o que exige cobrança por consumo (dados do tenant) e limites. |
+| copilot-chat | instrucoes-e-prompts.md | Modelo de instruções para agentes do Copilot Chat sem licença. A parte genérica de engenharia de prompt pode vir do ForgeProtocol. |
 | copilot-chat | fatos-volateis.md | Tabela de fatos (esquema da Tarefa 3), vazia. |
 | copilot-m365-agent-builder | capacidades-limites.md | Fontes de conhecimento permitidas, limites de instruções e arquivos, compartilhamento, diferença para agente do Toolkit. |
 | copilot-m365-agent-builder | passo-a-passo.md | Roteiro de criação no Agent Builder, tela por tela. O Template_Entrega manda buscar o passo a passo no Learn MCP em tempo de execução; aqui entra só o esqueleto. |
@@ -212,6 +212,11 @@ Nenhum arquivo de destino passa de 20.000 caracteres. Os maiores são: metodolog
 | copilot-studio | pipeline-dados.md | Tudo novo: fluxos de dados, conectores, Power Automate. |
 | copilot-studio | licenciamento-creditos.md | Tudo novo e muito volátil (créditos, licenças). |
 | copilot-studio | fatos-volateis.md | Tabela de fatos, vazia. |
+| copilot-notebooks | capacidades-limites.md | Tudo novo: o que o Copilot Notebooks faz, licença e governança (fatos NB-01 a NB-09). |
+| copilot-notebooks | estrutura-notebook.md | Tudo novo: References, Copilot Instructions, Pages, Overview, chat e saídas. |
+| copilot-notebooks | instrucoes-modelo.md | Tudo novo: modelo de instruções personalizadas para notebooks. |
+| copilot-notebooks | referencias-recomendadas.md | Tudo novo: como recomendar arquivos, Pages e reuniões como referências. |
+| copilot-notebooks | fatos-volateis.md | Preenchido em 2026-10-19 (NB-01 a NB-09), status a verificar. Limites de usuário dependem de material fora do Learn MCP. |
 | documentacao | documentacao-por-tipo-agente.md | Não existe: como documentar cada tipo de agente (Chat, Agent Builder, Toolkit, Studio). O Template_Entrega só traz o modelo genérico. |
 
 Também não existe nas fontes: modelos de documentação para Copilot Studio e Agent Builder, e a "Camada 2 de prompts" citada na instruction.txt (só aparece na instrução, sem texto de apoio).

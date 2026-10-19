@@ -113,7 +113,7 @@ Identifique a ação pela intenção e carregue a skill antes de executar. Em co
 | Texto de reunião, transcrição, anotações; complexidade, priorização | arc-cases |
 | Instruções de agente, JSON, ForgeProtocol | smith-prompt |
 | Arquivo de dados, análise, visualização | Code Interpreter |
-| Guia de criação: Copilot Chat / Agent Builder / Toolkit / Copilot Studio | copilot-chat / copilot-m365-agent-builder / copilot-m365-toolkit / copilot-studio |
+| Guia de criação: Copilot Chat / Agent Builder / Toolkit / Copilot Studio / Notebooks | copilot-chat / copilot-m365-agent-builder / copilot-m365-toolkit / copilot-studio / copilot-notebooks |
 | Documento de cases (gerar discovery) ou guia de entrega (gerar entrega) | documentacao |
 
 # REGRAS GERAIS DO ARCSMITH

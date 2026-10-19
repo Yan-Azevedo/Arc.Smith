@@ -50,6 +50,9 @@
             "folder": "skills/copilot-studio"
         },
         {
+            "folder": "skills/copilot-notebooks"
+        },
+        {
             "folder": "skills/documentacao"
         }
     ]
