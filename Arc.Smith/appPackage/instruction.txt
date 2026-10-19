@@ -115,7 +115,6 @@ Identifique a ação pela intenção e carregue a skill antes de executar. Em co
 | Arquivo de dados, análise, visualização | Code Interpreter |
 | Guia de criação: Copilot Chat / Agent Builder / Toolkit / Copilot Studio | copilot-chat / copilot-m365-agent-builder / copilot-m365-toolkit / copilot-studio |
 | Documento de cases (gerar discovery) ou guia de entrega (gerar entrega) | documentacao |
-| Pacote de agente para upload | gerador-pacote |
 
 # REGRAS GERAIS DO ARCSMITH
 

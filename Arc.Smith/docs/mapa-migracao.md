@@ -213,10 +213,6 @@ Nenhum arquivo de destino passa de 20.000 caracteres. Os maiores são: metodolog
 | copilot-studio | licenciamento-creditos.md | Tudo novo e muito volátil (créditos, licenças). |
 | copilot-studio | fatos-volateis.md | Tabela de fatos, vazia. |
 | documentacao | documentacao-por-tipo-agente.md | Não existe: como documentar cada tipo de agente (Chat, Agent Builder, Toolkit, Studio). O Template_Entrega só traz o modelo genérico. |
-| gerador-pacote | estrutura-pacote-declarativo.md | Estrutura do pacote (manifest, declarativeAgent, ai-plugin, skills, ícones). Pode partir do que existe em appPackage/. |
-| gerador-pacote | checklist-validacao.md | Checklist de validação (limites de skills, instruções, schema). Parte já foi exercitada nas verificações desta migração. |
-| gerador-pacote | importacao-por-plataforma.md | Como importar o pacote em cada plataforma (upload no admin do Microsoft 365, atk). |
-| gerador-pacote | assets/*.base.json e scripts/*.py | Modelos-base (derivar de appPackage/ com placeholders) e scripts build_package.py e validate_package.py (stdlib, sem rede). Nada existe nas fontes. |
 
 Também não existe nas fontes: modelos de documentação para Copilot Studio e Agent Builder, e a "Camada 2 de prompts" citada na instruction.txt (só aparece na instrução, sem texto de apoio).
 
