@@ -12,7 +12,7 @@ Gerado em 2026-10-19, somente análise. Nenhum conteúdo foi movido. Tamanhos em
 | Template_Entrega.txt | 10.486 | 14 |
 | **Total** | **103.594** | **119** |
 
-Seções sem destino entre os stubs existentes: **2**.
+Seções sem destino entre os stubs existentes: **0**.
 
 ## 2. Totais por arquivo de destino
 
@@ -21,11 +21,12 @@ Seções sem destino entre os stubs existentes: **2**.
 | arc-cases | antipadroes.md | 4.019 |  |
 | arc-cases | complexidade.md | 1.652 |  |
 | arc-cases | estrutura-case.md | 1.409 |  |
-| arc-cases | metodologia-entrega.md | 12.383 |  |
+| arc-cases | metodologia-entrega.md | 10.565 |  |
 | arc-cases | metodologia-entrevistas.md | 8.523 |  |
 | arc-cases | metodologia-fundamentos.md | 12.968 |  |
 | arc-cases | metodologia-identificacao.md | 7.841 |  |
 | arc-cases | metodologia-validacao.md | 4.840 |  |
+| arc-cases | metricas-valor.md | 1.818 |  |
 | arc-cases | priorizacao.md | 3.979 |  |
 | arc-cases | tipo-solucao.md | 2.083 |  |
 | copilot-m365-toolkit | capacidades-limites.md | 4.958 |  |
@@ -86,9 +87,9 @@ Seções sem destino entre os stubs existentes: **2**.
 | SolutionKnowledge.md:336 | Modelo de Documentação de Cases | 1.409 | arc-cases | estrutura-case.md | Seções obrigatórias do case; alinhar com a saída do módulo Arc |
 | SolutionKnowledge.md:352 | Apresentação e Alinhamento dos Cases | 967 | arc-cases | metodologia-identificacao.md |  |
 | SolutionKnowledge.md:360 | Construção, Testes e Validação da Solução (Módulo Smith) | 442 | arc-cases | metodologia-validacao.md | Introdução do módulo Smith |
-| SolutionKnowledge.md:364 | Decisão do Tipo de Solução | 2.083 | (nenhuma) | SEM DESTINO, sugerido: tipo-solucao.md | SEM DESTINO. Tipos de solução são raciocínio interno (nunca citar no texto final); manter fora do texto do case |
+| SolutionKnowledge.md:364 | Decisão do Tipo de Solução | 2.083 | arc-cases | tipo-solucao.md | Tipos de solução são raciocínio interno (nunca citar no texto final); manter fora do texto do case |
 | SolutionKnowledge.md:378 | Construção Iterativa do Prompt (se aplicável) | 1.828 | smith-prompt | boas-praticas.md | Cruzar com forge-protocol.md |
-| SolutionKnowledge.md:400 | Desenvolvimento Iterativo do Agente (se aplicável) | 1.162 | (nenhuma) | SEM DESTINO, sugerido: desenvolvimento-agente.md | SEM DESTINO. Conteúdo sobre construir agente, não só prompt |
+| SolutionKnowledge.md:400 | Desenvolvimento Iterativo do Agente (se aplicável) | 1.162 | smith-prompt | desenvolvimento-agente.md | Conteúdo sobre construir agente, não só prompt |
 | SolutionKnowledge.md:409 | Engenharia de Prompt e Melhores Práticas | 1.075 | smith-prompt | boas-praticas.md | Sobrepõe-se a ForgeProtocol > Boas Práticas; consolidar |
 | SolutionKnowledge.md:419 | Definição do Output Esperado | 965 | smith-prompt | schema-prompt-base.md |  |
 | SolutionKnowledge.md:430 | Testes da Solução | 936 | arc-cases | metodologia-validacao.md |  |
@@ -100,8 +101,8 @@ Seções sem destino entre os stubs existentes: **2**.
 | SolutionKnowledge.md:487 | Documentação Final, Entrega e Sustentação | 294 | arc-cases | metodologia-entrega.md | Introdução |
 | SolutionKnowledge.md:491 | Estrutura do Documento de Entrega | 1.603 | arc-cases | metodologia-entrega.md | Duplica Template_Entrega; manter só o essencial aqui e remeter a documentacao/modelo-entrega.md |
 | SolutionKnowledge.md:503 | Comparação "Antes vs. Depois" | 747 | arc-cases | metodologia-entrega.md |  |
-| SolutionKnowledge.md:511 | Métricas de Valor | 1.270 | arc-cases | metodologia-entrega.md |  |
-| SolutionKnowledge.md:525 | Equilíbrio entre Métricas Quantitativas e Qualitativas | 548 | arc-cases | metodologia-entrega.md |  |
+| SolutionKnowledge.md:511 | Métricas de Valor | 1.270 | arc-cases | metricas-valor.md |  |
+| SolutionKnowledge.md:525 | Equilíbrio entre Métricas Quantitativas e Qualitativas | 548 | arc-cases | metricas-valor.md |  |
 | SolutionKnowledge.md:534 | Guia de Uso (Manual do Usuário) | 968 | arc-cases | metodologia-entrega.md |  |
 | SolutionKnowledge.md:544 | Documentação da Solução (Técnica e Operacional) | 967 | arc-cases | metodologia-entrega.md |  |
 | SolutionKnowledge.md:554 | Recomendações e Próximas Etapas | 924 | arc-cases | metodologia-entrega.md |  |
@@ -184,10 +185,10 @@ Seções sem destino entre os stubs existentes: **2**.
 
 Nenhum.
 
-Nenhum arquivo de destino passa de 20.000 caracteres. Os maiores são: metodologia-fundamentos.md (12.968), metodologia-entrega.md (12.383) e metodologia-entrevistas.md (8.523). Se crescerem na Fase 3, divisão proposta:
+Nenhum arquivo de destino passa de 20.000 caracteres. Os maiores são: metodologia-fundamentos.md (12.968), metodologia-entrega.md (10.565) e metodologia-entrevistas.md (8.523). Se crescerem na Fase 3, divisão proposta:
 
 - metodologia-fundamentos.md: separar "Critérios Fundamentais" (3.386) em criterios-fundamentais.md e deixar o restante em metodologia-fundamentos.md.
-- metodologia-entrega.md: separar "Métricas de Valor" e "Equilíbrio entre Métricas" em metricas-valor.md e deixar "Sinais/Lições/Handover" em metodologia-entrega.md.
+- metodologia-entrega.md: "Métricas de Valor" e "Equilíbrio entre Métricas" já foram separadas em metricas-valor.md.
 - Nota: o limite de 20.000 caracteres foi pedido para os arquivos de destino; o teto documentado se aplica ao SKILL.md. Arquivos menores tendem a ser carregados com mais precisão.
 
 ## 5. Lacunas (conteúdo novo para a Fase 3, inexistente em qualquer fonte)
