@@ -1,0 +1,1 @@
+STATUS: pending - English version produced after the Core rewrite (mirror of Arc.Smith/appPackage/instruction.txt)
