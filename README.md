@@ -43,11 +43,11 @@ A consolidação eliminou a fragmentação entre identificação de oportunidade
 
 ### Evolução para a versão 2.0
 
-Na versão 2.0 o ArcSmith evoluiu de bases de conhecimento publicadas no GitHub Pages para **Custom Skills** empacotadas no próprio agente. O conhecimento que antes era consultado por URL agora vive dentro do pacote, organizado em oito skills que carregam sob demanda, e o agente ganhou guias para cada plataforma de agentes do ecossistema Microsoft Copilot.
+Na versão 2.0 o ArcSmith evoluiu de **knowledge** (fontes de conhecimento: bases publicadas no GitHub Pages e lidas por URL) para **Custom Skills** empacotadas no próprio agente. O conhecimento que antes era consultado por URL agora vive dentro do pacote, organizado em oito skills que carregam sob demanda, e o agente ganhou guias para cada plataforma de agentes do ecossistema Microsoft Copilot.
 
 | Versão | Como o conhecimento chegava ao agente |
 |---|---|
-| 1.x | ForgeProtocol, SolutionKnowledge e templates publicados no GitHub Pages e lidos via WebSearch |
+| 1.x | Knowledge: ForgeProtocol, SolutionKnowledge e templates publicados no GitHub Pages e lidos por URL (capability WebSearch) |
 | 2.0 | Oito Custom Skills no pacote do agente, com o Microsoft Learn MCP como fonte de verdade para fatos de plataforma |
 
 <p align="center">
