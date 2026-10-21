@@ -11,6 +11,51 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [2.0.0]
+
+### Adicionado
+- **Custom Skills (preview)**: oito skills empacotadas no agente, carregadas sob demanda:
+  - `arc-cases` — metodologia de cases, complexidade e priorização impacto x esforço consolidada.
+  - `smith-prompt` — Prompt-Base, caixas copiáveis, limites por plataforma e exemplos neutros.
+  - `copilot-chat` — agentes para usuários do Copilot Chat sem licença.
+  - `copilot-m365-agent-builder` — Agent Builder, com o novo modo de criação assistida pela aba Descrever.
+  - `copilot-m365-toolkit` — agentes declarativos em código: manifestos, capabilities, skills, MCP e provision.
+  - `copilot-studio` — harnesses, conhecimento, ferramentas, pipeline de captura de dados e Copilot Credits.
+  - `copilot-notebooks` — criação completa de Copilot Notebooks.
+  - `documentacao` — Seleção de Cases, Documento do Case e Guia de Criação do Agente, no modelo fixo do Brandbook Cloud Target – Modern Work & IA (logos oficiais e script `brand_docx.py` na skill), sempre gerados após confirmação do usuário.
+- **Regra absoluta** de não inventar: em qualquer dúvida o agente pergunta ou usa placeholder.
+- **Seleção de cases no Arc:** um case é documentado direto; vários cases geram o relatório de seleção para aprovação do cliente. Classificação Aderente (complexidade de construção e de sustentação) ou Viável em projeto, com Dor, O que resolve, Impacto e Valor.
+- **Vocabulário Copilot Basic e Copilot Premium** para os dois níveis de licença do cliente.
+- **Modos Assistente e Detalhado** no Smith, escolhidos no primeiro passo com recomendação do ArcSmith. O Assistente entrevista o usuário ponto a ponto antes do briefing.
+- **Verificação de recursos** no primeiro passo do Smith: a disponibilidade por nível e plataforma (skills, fontes, capacidades, ações, limites) é confirmada no Microsoft Learn a cada criação, nunca fixada.
+- **Skills do agente criado**, quando a verificação confirmar suporte: descrição no briefing do Agent Builder ou `SKILL.md` e pacote `.zip` no modo Detalhado.
+- Capability **`EmailActions`** para criar o rascunho do e-mail de formalização no Outlook; o envio é sempre do usuário. Mensagem do Teams em caixa copiável até existir capability de envio.
+- **Fatos voláteis** por plataforma, com fonte, data de verificação e prazo de revalidação, e método de atualização em `docs/metodo-atualizacao.md`.
+- Ferramenta `microsoft_code_sample_search` no Microsoft Learn MCP.
+- **Espelho em inglês** (`Arc.Smith-EN/`) do Core e das skills.
+
+### Modificado
+- `instruction.txt` reescrito como **Core de orquestração**: identidade, regra absoluta, fontes de verdade, roteamento para skills, regra de guarda, caixas copiáveis e comandos.
+- Microsoft Learn MCP passa a ser a fonte de verdade para fatos de plataforma, prevalecendo sobre o conteúdo das skills.
+- Prompt-Base com sete parâmetros em ordem fixa (Goal, Context, Instructions, Tone, Format, Use Case, Output), entregue em caixa copiável markdown.
+- Descrições do agente e do manifesto atualizadas para o posicionamento atual.
+- **Licença**: de Creative Commons BY-NC-ND 4.0 para licença proprietária. O repositório passa a ser privado e o agente, de uso exclusivo do autor.
+
+### Removido
+- Capability `WebSearch` com as URLs do GitHub Pages (ForgeProtocol, SolutionKnowledge, Template_Cases e Template_Entrega). O conhecimento agora vive nas skills; os arquivos da 1.x ficam em `docs/` como histórico.
+- Parâmetro `Temperature` do Prompt-Base: não é configurável em agentes.
+- Exemplos derivados de casos reais, substituídos por exemplos fictícios.
+
+---
+
+## [1.7.x]
+
+### Modificado
+- Migração do schema do Declarative Agent para v1.8 e, em seguida, para v1.9, pré-requisito das Custom Skills.
+- Correção de comportamento nas instruções: regra de guarda para troca de módulo apenas com intenção explícita, bloco de código obrigatório no JSON do Smith e esclarecimento de que o limite de 8.000 caracteres se aplica às instruções do agente criado.
+
+---
+
 ## [1.7.0]
 
 ### Adicionado
@@ -138,6 +183,8 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+[2.0.0]: https://github.com/Yan-Azevedo/Arc.Smith/compare/v1.7.5...v2.0.0
+[1.7.x]: https://github.com/Yan-Azevedo/Arc.Smith/compare/v1.7.0...v1.7.5
 [1.7.0]: https://github.com/Yan-Azevedo/Arc.Smith/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/Yan-Azevedo/Arc.Smith/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/Yan-Azevedo/Arc.Smith/compare/v1.4.0...v1.5.0

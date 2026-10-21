@@ -11,11 +11,11 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Microsoft%20365-Copilot-blue?style=flat-square&logo=microsoft" alt="M365 Copilot"/>
-  <img src="https://img.shields.io/badge/Schema-v1.7-orange?style=flat-square" alt="Schema v1.7"/>
-  <img src="https://img.shields.io/badge/Version-1.7.0-success?style=flat-square" alt="Version"/>
+  <img src="https://img.shields.io/badge/Schema-v1.9-orange?style=flat-square" alt="Schema v1.9"/>
+  <img src="https://img.shields.io/badge/Version-2.0.0-success?style=flat-square" alt="Version"/>
   <img src="https://img.shields.io/badge/Language-pt--BR-yellow?style=flat-square" alt="Language"/>
   <img src="https://img.shields.io/badge/Status-Operacional-brightgreen?style=flat-square" alt="Status"/>
-  <img src="https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey?style=flat-square" alt="License"/>
+  <img src="https://img.shields.io/badge/License-Proprietary-lightgrey?style=flat-square" alt="License"/>
 </p>
 
 ---
@@ -41,6 +41,15 @@ O ArcSmith nasceu da consolidação de dois agentes autorais anteriores em um ú
 
 A consolidação eliminou a fragmentação entre identificação de oportunidades e construção técnica, permitindo que ambas as etapas operem dentro de um mesmo agente com contexto compartilhado e arquitetura unificada.
 
+### Evolução para a versão 2.0
+
+Na versão 2.0 o ArcSmith evoluiu de bases de conhecimento publicadas no GitHub Pages para **Custom Skills** empacotadas no próprio agente. O conhecimento que antes era consultado por URL agora vive dentro do pacote, organizado em oito skills que carregam sob demanda, e o agente ganhou guias para cada plataforma de agentes do ecossistema Microsoft Copilot.
+
+| Versão | Como o conhecimento chegava ao agente |
+|---|---|
+| 1.x | ForgeProtocol, SolutionKnowledge e templates publicados no GitHub Pages e lidos via WebSearch |
+| 2.0 | Oito Custom Skills no pacote do agente, com o Microsoft Learn MCP como fonte de verdade para fatos de plataforma |
+
 <p align="center">
   <img src="docs/Assets/Initial.jpeg" alt="ArcSmith em ação" width="100%"/>
 </p>
@@ -49,68 +58,84 @@ A consolidação eliminou a fragmentação entre identificação de oportunidade
 
 ## Arquitetura técnica
 
-O ArcSmith não utiliza RAG técnico tradicional — opera com **arquitetura híbrida de grounding multi-fonte com retrieval aumentado**, combinando conhecimento curado autoral, retrieval dinâmico externo e grounding nativo no tenant.
+O ArcSmith não utiliza RAG técnico tradicional. Na versão 2.0 ele combina um **Core de orquestração** nas instruções, **Custom Skills** carregadas sob demanda, o **Microsoft Learn MCP** para fatos atualizados de plataforma e o grounding nativo no tenant.
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│                      ARCSMITH                                │
-│           Declarative Agent — Schema v1.7                    │
+│                      ARCSMITH 2.0                            │
+│           Declarative Agent — Schema v1.9                    │
 │                                                              │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │  REGRA FUNDAMENTAL                                     │  │
-│  │  Foco absoluto na entrega de valor ao usuário final    │  │
-│  └────────────────────────────────────────────────────────┘  │
+│  CORE (instruction.txt)                                      │
+│  Identidade · Regra absoluta · Roteamento · Caixas copiáveis │
+└──────────────────────────────────────────────────────────────┘
+                            │
+                CUSTOM SKILLS (sob demanda)
+┌──────────────────────────────────────────────────────────────┐
+│  arc-cases            Seleção, classificação e cases         │
+│  smith-prompt         Modos de criação, Prompt-Base e skills │
+│  copilot-chat         Agentes para Copilot Basic             │
+│  copilot-m365-agent-builder   Agent Builder (2 modos)        │
+│  copilot-m365-toolkit         Agentes declarativos em código │
+│  copilot-studio       Harness, ferramentas, fluxos, créditos │
+│  copilot-notebooks    Notebooks completos                    │
+│  documentacao         Discovery e Guia de Criação (.docx)    │
 └──────────────────────────────────────────────────────────────┘
                             │
         ┌───────────────────┼───────────────────┐
-        │                   │                   │
         ▼                   ▼                   ▼
 ┌───────────────┐  ┌────────────────┐  ┌─────────────────┐
-│  MÓDULO ARC   │  │ MÓDULO SMITH   │  │ CODE INTERPRETER│
-│               │  │                │  │                 │
-│  Documenta    │  │  Engenharia    │  │  Análise Python │
-│  cases a      │  │  de prompts    │  │  e geração de   │
-│  partir de    │  │  e agentes IA  │  │  artefatos      │
-│  transcrições │  │                │  │                 │
+│ Microsoft     │  │ CODE           │  │ TENANT M365     │
+│ Learn MCP     │  │ INTERPRETER    │  │ OneDrive,       │
+│ Fonte de      │  │ Análise e      │  │ SharePoint,     │
+│ verdade       │  │ geração .docx  │  │ Teams, Email    │
 └───────────────┘  └────────────────┘  └─────────────────┘
-
-CONHECIMENTO ESTRUTURADO (Grounding sofisticado)
-┌────────────────────────────────────────────────────────────┐
-│                                                            │
-│  📘 ForgeProtocol         📗 SolutionKnowledge            │
-│  Engenharia de prompt     Metodologia autoral de           │
-│  (GitHub Pages)           construção de soluções           │
-│                           (GitHub Pages)                   │
-│                                                            │
-│  🌐 Microsoft Learn MCP   🏢 Tenant M365 Native           │
-│  Documentação técnica     OneDrive, SharePoint,            │
-│  oficial em tempo real    Teams, Email                     │
-│                                                            │
-└────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
 ## Capacidades
 
-### 🎯 Módulo Arc — Documentação de Cases
+### 🎯 Módulo Arc — Seleção e Documentação de Cases
 
-Interpreta transcrições, anotações e resumos de conversas com stakeholders e estrutura cases padronizados de oportunidades de IA.
+Interpreta transcrições, anotações e resumos da reunião de discovery e conduz o cliente até a decisão do case a construir.
 
 - Identificação automática de múltiplos cases em uma única transcrição
-- Reconstrução do processo atual (AS-IS) com gargalos destacados
-- Desenho do processo futuro (TO-BE) com papel da IA vs humano
-- Classificação de complexidade: 🟢 Baixa / 🟡 Média / 🔴 Alta / 💼 Projeto
-- Quadrante de priorização por Impacto vs. Esforço
+- Um case: documentação e documento do case direto; vários cases: relatório de seleção para aprovação do cliente e, depois, a documentação do case escolhido
+- Classificação **Aderente** (complexidade de construção e de sustentação: Baixa, Média ou Alta) ou **Viável em projeto**
+- Dor, O que resolve, Impacto e Valor em todo case
+- Reconstrução do processo atual (AS-IS) e apoio da matriz Impacto vs. Esforço na recomendação
 
-### ⚒️ Módulo Smith — Engenharia de Prompt
+### ⚒️ Módulo Smith — Criação de Agentes
 
-Constrói instruções estruturadas para o correto funcionamento de soluções em IA, aplicando arquitetura e engenharia de prompt adequadas.
+Constrói o agente completo, começando pela escolha do modo de criação, com recomendação do ArcSmith.
 
-- Geração de Prompt-Base estruturado em JSON
-- Edição incremental sem perda de coerência
-- Parâmetros de refinamento: Temperature, Goal, Tone, Format, Use Case, Context, Instructions, Output
-- Comando de reset para iniciar novos prompts do zero
+- **Modo Assistente:** entrevista ponto a ponto e briefing único para a conversa de criação do Agent Builder (Copilot Basic e Premium)
+- **Modo Detalhado:** camada por camada no Agent Builder manual, Agents Toolkit, Copilot Studio e Copilot Notebooks
+- **Verificação de recursos** no primeiro passo: o que o nível e a plataforma permitem hoje, confirmado no Microsoft Learn, com fonte e data
+- Skills do agente criado, quando a verificação confirmar suporte: descrição no briefing (Assistente) ou `SKILL.md` e pacote `.zip` (Detalhado)
+
+- Prompt-Base em JSON com sete parâmetros, nesta ordem: Goal, Context, Instructions, Tone, Format, Use Case e Output
+- Nome, título, descrição, instruções e prompts iniciais sempre em caixas copiáveis
+- Limite de 8.000 caracteres do agente criado, contando o bloco inteiro
+- Edição incremental sem perda de coerência e comando de reset
+
+### 🧭 Guias por plataforma
+
+Uma skill para cada tipo de solução, com campos, limites, licenças e passo a passo confirmados no Microsoft Learn:
+
+- **Copilot Basic e Premium** — dois níveis: Copilot Chat sem licença (Basic) e Microsoft 365 Copilot ou cobrança por consumo (Premium)
+- **Agent Builder** — criação manual ou assistida em linguagem natural
+- **Agents Toolkit** — manifestos, capabilities, skills, MCP e ciclo de provision
+- **Copilot Studio** — harnesses, conhecimento, ferramentas, tópicos, fluxos e Copilot Credits
+- **Copilot Notebooks** — instruções, referências recomendadas e estrutura de uso
+
+### 📄 Documentação de entrega
+
+- **Seleção de Cases** (vários cases, para decisão do cliente) e **Documento do Case** (case único ou escolhido), pelo `gerar discovery`
+- **Guia de Criação do Agente** (`gerar entrega`) adaptado à plataforma, com seção de sustentação
+- O agente sempre pergunta antes de gerar; todo documento segue o padrão do **Brandbook Cloud Target – Modern Work & IA** (capa escura com logo neon, paleta Deep/Purple/Neon, Poppins), com nome do cliente, título, subtítulo e pontos-chave, gerado pelo script `brand_docx.py` da skill documentacao
+- **Formalização pós-discovery:** e-mail completo criado como rascunho no Outlook (`EmailActions`), nunca enviado pelo agente, e mensagem do Teams em caixa copiável
+- Formatação padronizada e blocos de cópia para todo conteúdo a copiar e colar
 
 ### 🧪 Módulo Code Interpreter — Análise e Visualização
 
@@ -127,6 +152,9 @@ Conexão dinâmica com a documentação oficial Microsoft em tempo real, garanti
 
 - `microsoft_docs_search` — busca semântica na documentação oficial
 - `microsoft_docs_fetch` — recuperação de páginas completas em markdown
+- `microsoft_code_sample_search` — exemplos de código oficiais
+
+Na versão 2.0, o Learn é a **fonte de verdade** para fatos de plataforma: em conflito com o conteúdo das skills, o Learn prevalece.
 
 ### 🏢 Grounding nativo no Tenant M365
 
@@ -135,6 +163,7 @@ Acesso direto ao contexto do usuário via capabilities nativas do Declarative Ag
 - **OneDriveAndSharePoint** — documentos, OneNote, arquivos
 - **TeamsMessages** — conversas, canais, chats
 - **Email** — histórico de e-mails do usuário
+- **EmailActions** — criação do rascunho do e-mail de formalização, sempre revisado e enviado pelo usuário
 
 ---
 
@@ -155,12 +184,12 @@ O ArcSmith opera sobre uma metodologia própria de construção de soluções de
 
 ### Bases de conhecimento
 
-| Documento | Foco | Status |
+| Versão | Base | Onde vive |
 |---|---|---|
-| **ForgeProtocol** | Engenharia de prompt — estrutura JSON, parâmetros e boas práticas | ✅ Ativo |
-| **SolutionKnowledge** | Metodologia completa de construção de soluções de IA | ✅ Ativo |
+| 1.x | **ForgeProtocol** e **SolutionKnowledge** | GitHub Pages, lidos via WebSearch |
+| 2.0 | Metodologia e engenharia de prompt migradas para as skills `arc-cases` e `smith-prompt` | Pacote do agente (Custom Skills) |
 
-Acesse a base completa em [yan-azevedo.github.io/Arc.Smith](https://yan-azevedo.github.io/Arc.Smith/).
+Os arquivos da 1.x continuam em `docs/` como histórico. O agente usa a versão empacotada nas skills.
 
 ---
 
@@ -170,10 +199,10 @@ Acesse a base completa em [yan-azevedo.github.io/Arc.Smith](https://yan-azevedo.
 |---|---|
 | **Plataforma** | Microsoft 365 Copilot |
 | **Framework** | Microsoft 365 Agents Toolkit |
-| **Schema** | Declarative Agent v1.7 |
+| **Schema** | Declarative Agent v1.9 |
 | **Modo de resposta** | Think deeper (raciocínio profundo) |
-| **Knowledge sources** | GitHub Pages (WebSearch) |
-| **Retrieval externo** | Microsoft Learn MCP (HTTP) |
+| **Conhecimento** | 8 Custom Skills (preview) no pacote |
+| **Fonte de verdade** | Microsoft Learn MCP (HTTP) |
 | **Grounding tenant** | OneDrive, SharePoint, Teams, Email |
 | **Análise de dados** | Code Interpreter (Python sandbox) |
 | **Versionamento** | Git + GitHub |
@@ -183,7 +212,7 @@ Acesse a base completa em [yan-azevedo.github.io/Arc.Smith](https://yan-azevedo.
 
 ## Comportamento avançado
 
-O ArcSmith opera com configurações de comportamento herdadas do schema v1.7 que elevam significativamente a qualidade das respostas:
+O ArcSmith opera com configurações de comportamento do schema que elevam significativamente a qualidade das respostas:
 
 ```json
 "behavior_overrides": {
@@ -195,29 +224,31 @@ O ArcSmith opera com configurações de comportamento herdadas do schema v1.7 qu
 ```
 
 - **Think deeper** — modo de raciocínio profundo ativado por padrão, alinhado com Chain of Thought e Extreme Ownership
-- **Discourage model knowledge** — prioriza o conhecimento curado (ForgeProtocol + SolutionKnowledge + MCP) sobre o conhecimento genérico do modelo
+- **Discourage model knowledge** — prioriza o conhecimento das skills e do Microsoft Learn MCP sobre o conhecimento genérico do modelo
 
 ---
 
 ## Estrutura do repositório
 
 ```
-Arc.Smith/
-├── .vscode/
-├── appPackage/
-│   ├── ai-plugin.json          # Plugin MCP (Microsoft Learn)
-│   ├── declarativeAgent.json   # Definição principal do agente
-│   ├── instruction.txt         # Instruções operacionais (≤8000 caracteres)
-│   ├── manifest.json           # Manifesto do app M365
-│   ├── color.png               # Ícone principal (192x192)
-│   └── outline.png             # Ícone de contorno (32x32)
-├── docs/
-│   ├── ForgeProtocol.md        # Base de conhecimento — engenharia de prompt
-│   ├── SolutionKnowledge.md    # Base de conhecimento — metodologia
-│   └── Assets/                 # Imagens e logos
-├── env/
-├── .vscode/mcp.json            # Configuração do MCP server
-├── m365agents.yml              # Configuração do Agents Toolkit
+Arc.Smith/                      # Raiz do repositório
+├── Arc.Smith/                  # Projeto do Agents Toolkit (provisionado)
+│   ├── appPackage/
+│   │   ├── ai-plugin.json          # Plugin MCP (Microsoft Learn)
+│   │   ├── mcp-tools.json          # Ferramentas do MCP
+│   │   ├── declarativeAgent.json   # Definição principal do agente
+│   │   ├── instruction.txt         # Core (≤8000 caracteres)
+│   │   ├── manifest.json           # Manifesto do app M365
+│   │   ├── skills/                 # 8 Custom Skills (SKILL.md + references/)
+│   │   ├── color.png               # Ícone principal (192x192)
+│   │   └── outline.png             # Ícone de contorno (32x32)
+│   ├── docs/                   # Mapa de migração e método de atualização
+│   ├── env/
+│   ├── m365agents.yml
+│   └── README.md               # Documentação técnica
+├── Arc.Smith-EN/               # Espelho em inglês do Core e das skills
+├── docs/                       # Fontes da 1.x (histórico) e imagens
+├── CHANGELOG.md
 ├── README.md                   # Este documento
 └── LICENSE.md
 ```
@@ -230,6 +261,8 @@ Arc.Smith/
 - **Microsoft 365 Agents Toolkit** (VS Code extension 5.0.0+)
 - **Licença Microsoft 365 Copilot**
 - **Conta Microsoft 365** para desenvolvimento
+- **Microsoft Frontier Program** habilitado no tenant (Custom Skills em preview)
+- Variável de ambiente `TEAMSFX_AGENT_SKILLS=true` antes de abrir o VS Code
 
 ---
 
@@ -242,11 +275,14 @@ git clone https://github.com/Yan-Azevedo/Arc.Smith.git
 # 2. Abra no VS Code
 code Arc.Smith
 
-# 3. Faça login no painel do M365 Agents Toolkit
+# 3. Habilite as skills (uma vez por máquina) e reinicie o VS Code
+#    [System.Environment]::SetEnvironmentVariable("TEAMSFX_AGENT_SKILLS","true","User")
 
-# 4. Incremente a versão no manifest.json (se houver mudanças)
+# 4. Faça login no painel do M365 Agents Toolkit
 
-# 5. Execute o Provision pelo painel Lifecycle do Toolkit
+# 5. Incremente a versão no manifest.json (se houver mudanças)
+
+# 6. Execute o Provision pelo painel Lifecycle do Toolkit
 ```
 
 Após o Provision, o ArcSmith estará disponível em [m365.cloud.microsoft](https://m365.cloud.microsoft) na lista de agentes.
@@ -257,20 +293,24 @@ Após o Provision, o ArcSmith estará disponível em [m365.cloud.microsoft](http
 
 | Componente | Status |
 |---|---|
-| Módulo Arc (Cases) | ✅ Operacional |
-| Módulo Smith (Prompts) | ✅ Operacional |
-| Módulo Code Interpreter | ✅ Ativo |
-| Microsoft Learn MCP | ✅ Integrado |
-| ForgeProtocol Knowledge | ✅ Publicado |
-| SolutionKnowledge Knowledge | ✅ Publicado |
+| Core de orquestração (instruction.txt) | ✅ Reescrito na 2.0 |
+| Módulo Arc (skill arc-cases) | ✅ Operacional |
+| Módulo Smith (skill smith-prompt) | ✅ Operacional, com modos Assistente e Detalhado |
+| Guias por plataforma (5 skills) | ✅ Habilitados |
+| Documentação de entrega (skill documentacao) | ✅ Habilitada |
+| Microsoft Learn MCP | ✅ Integrado (3 ferramentas) |
+| Code Interpreter | ✅ Ativo |
 | Grounding M365 (Teams, OneDrive, Email) | ✅ Habilitado |
-| Templates de entrega | ✅ Habilitado |
+| Espelho em inglês (Arc.Smith-EN) | ✅ Disponível |
+| Rascunho de e-mail de formalização (EmailActions) | 🧪 A validar no tenant |
+| Envio de mensagem no Teams | ⏸️ Evolução futura (hoje em caixa copiável) |
+| Embedded Knowledge | ⏸️ Aguardando suporte à combinação com skills |
 
 ---
 
 ## Licença
 
-Este projeto está licenciado sob **Creative Commons Atribuição-NãoComercial-SemDerivações 4.0 Internacional (CC BY-NC-ND 4.0)**.
+Projeto **proprietário**, de uso exclusivo do autor, mantido em repositório privado. Todos os direitos reservados. Até a versão 1.x o projeto foi distribuído sob CC BY-NC-ND 4.0.
 
 Consulte [LICENSE.md](LICENSE.md) para os termos completos.
 

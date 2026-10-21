@@ -1,5 +1,37 @@
 # Mapa de migração: fontes → references/ das skills
 
+## Estado final (2026-10-20, Fase 3 concluída)
+
+A migração foi executada. Todas as 119 seções das quatro fontes têm destino nas skills e todas as lacunas da seção 5 foram preenchidas com conteúdo novo, verificado no Microsoft Learn MCP quando se trata de fato de plataforma.
+
+| Skill | Arquivos .md | Caracteres |
+|---|---:|---:|
+| arc-cases | 12 | 64.115 |
+| copilot-chat | 4 | 6.895 |
+| copilot-m365-agent-builder | 6 | 15.146 |
+| copilot-m365-toolkit | 7 | 20.838 |
+| copilot-notebooks | 6 | 14.024 |
+| copilot-studio | 6 | 15.841 |
+| documentacao | 5 | 11.299 |
+| smith-prompt | 7 | 17.304 |
+
+Decisões tomadas durante a escrita, em relação à análise abaixo:
+
+- Exemplos do ForgeProtocol (7 Leis de Uso da IA, Guia Jurídico) e a tabela de oportunidades do SolutionKnowledge foram substituídos por exemplos neutros e fictícios.
+- O bloco "Referência Microsoft Learn" do ForgeProtocol não foi migrado como texto: os fatos foram para as tabelas `fatos-volateis.md`, com fonte e data.
+- `Temperature` saiu do schema do Prompt-Base; o schema passou a ter sete parâmetros (Goal, Context, Instructions, Tone, Format, Use Case, Output).
+- "Diretrizes de Operação do ArcSmith" foram consolidadas no Core (`instruction.txt`) e no `SKILL.md` da smith-prompt, sem duplicação.
+- Priorização: os critérios do SolutionKnowledge e o "Modelo Ideal" foram unidos em uma régua mista de impacto x esforço, sem exemplos de cliente.
+- O modelo do case ficou só em `estrutura-case.md`, alinhado com a saída do módulo Arc.
+- Foi criada a skill `copilot-notebooks` e, na `copilot-m365-agent-builder`, o arquivo `criacao-assistida.md` (modo Agent Builder).
+- Template_Entrega item 6 foi reescrito para a arquitetura sem URLs.
+- Há um espelho em inglês em `Arc.Smith-EN/`, com a mesma estrutura.
+- O repositório passou a ser privado e o agente, de uso exclusivo do autor; o risco de exposição descrito na seção 6 deixou de se aplicar.
+
+As seções 1 a 7 abaixo são a análise original de 2026-10-19, mantida como histórico.
+
+---
+
 Gerado em 2026-10-19, somente análise. Nenhum conteúdo foi movido. Tamanhos em caracteres (soma por seção, do título até o próximo título). O limite de ~20.000 caracteres vale por arquivo de destino.
 
 ## 1. Resumo

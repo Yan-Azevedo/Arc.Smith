@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Schema-v1.7-orange?style=flat-square" alt="Schema v1.7"/>
-  <img src="https://img.shields.io/badge/Version-1.7.1-success?style=flat-square" alt="Version"/>
+  <img src="https://img.shields.io/badge/Schema-v1.9-orange?style=flat-square" alt="Schema v1.9"/>
+  <img src="https://img.shields.io/badge/Version-2.0.0-success?style=flat-square" alt="Version"/>
   <img src="https://img.shields.io/badge/Language-pt--BR-yellow?style=flat-square" alt="Language"/>
 </p>
 
@@ -21,16 +21,17 @@
 
 ## Visão técnica
 
-O ArcSmith é um **Declarative Agent** do Microsoft 365 Copilot que utiliza arquitetura híbrida de grounding multi-fonte com retrieval aumentado, sem dependência de vector store ou pipeline RAG técnico.
+O ArcSmith é um **Declarative Agent** do Microsoft 365 Copilot. A partir da versão 2.0, o conhecimento sai do GitHub Pages e passa a viver em **Custom Skills** dentro do pacote: as instruções (`instruction.txt`) funcionam como **Core de orquestração** e cada skill carrega sob demanda o procedimento e os recursos de uma tarefa.
 
 ### Componentes principais
 
 | Componente | Tipo | Propósito |
 |---|---|---|
-| `declarativeAgent.json` | Manifest principal | Define capabilities, knowledge sources e behavior overrides |
-| `instruction.txt` | Instruções operacionais | Comportamento do agente (limite 8000 caracteres) |
-| `manifest.json` | Manifesto M365 | Metadados, ícones, developer info |
-| `ai-plugin.json` | Plugin MCP | Definição das ferramentas do Microsoft Learn MCP |
+| `declarativeAgent.json` | Manifest principal | Capabilities, actions, `agent_skills` e behavior overrides |
+| `instruction.txt` | Core | Identidade, regra absoluta, roteamento para skills, caixas copiáveis e comandos (limite 8000 caracteres) |
+| `skills/` | Custom Skills | Oito skills com `SKILL.md` e `references/` |
+| `manifest.json` | Manifesto M365 | Metadados, ícones, versão do app |
+| `ai-plugin.json` e `mcp-tools.json` | Plugin MCP | Ferramentas do Microsoft Learn MCP |
 | `m365agents.yml` | Configuração Toolkit | Lifecycle stages do Agents Toolkit |
 
 ---
@@ -40,7 +41,7 @@ O ArcSmith é um **Declarative Agent** do Microsoft 365 Copilot que utiliza arqu
 ### Versão do schema
 
 ```
-v1.7 — Declarative Agent
+v1.9 — Declarative Agent (mínimo exigido para Custom Skills)
 ```
 
 ### Capabilities ativas
@@ -48,18 +49,14 @@ v1.7 — Declarative Agent
 ```json
 "capabilities": [
   { "name": "CodeInterpreter" },
-  {
-    "name": "WebSearch",
-    "sites": [
-      { "url": "https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol" },
-      { "url": "https://yan-azevedo.github.io/Arc.Smith/SolutionKnowledge" }
-    ]
-  },
   { "name": "OneDriveAndSharePoint" },
   { "name": "TeamsMessages" },
-  { "name": "Email" }
+  { "name": "Email" },
+  { "name": "EmailActions" }
 ]
 ```
+
+O `WebSearch` com as URLs do GitHub Pages foi removido na 2.0. O agente não usa `EmbeddedKnowledge`, porque no preview as skills não podem ser combinadas com arquivos embedded.
 
 ### Behavior overrides
 
@@ -74,85 +71,87 @@ v1.7 — Declarative Agent
 
 | Configuração | Efeito |
 |---|---|
-| `default_response_mode: "Think deeper"` | Força raciocínio profundo por padrão (Chain of Thought) |
-| `discourage_model_knowledge: true` | Prioriza knowledge curado sobre conhecimento genérico do modelo |
+| `default_response_mode: "Think deeper"` | Raciocínio profundo por padrão |
+| `discourage_model_knowledge: true` | Prioriza skills e Microsoft Learn MCP sobre o conhecimento genérico do modelo |
 
 ### Actions (MCP)
 
 ```json
 "actions": [
-  {
-    "id": "ai-plugin",
-    "file": "ai-plugin.json"
-  }
+  { "id": "ai-plugin", "file": "ai-plugin.json" }
 ]
 ```
 
-O `ai-plugin.json` define a conexão com o **Microsoft Learn MCP Server** (`https://learn.microsoft.com/api/mcp`), expondo as ferramentas `microsoft_docs_search` e `microsoft_docs_fetch`.
+O `ai-plugin.json` conecta o **Microsoft Learn MCP Server** (`https://learn.microsoft.com/api/mcp`) com as ferramentas `microsoft_docs_search`, `microsoft_docs_fetch` e `microsoft_code_sample_search`.
 
 ---
 
-## Arquitetura de conhecimento
+## Custom Skills
 
 <p align="center">
   <img src="../docs/Assets/ArcSmith2.png" alt="ArcSmith — visão técnica" width="80%"/>
 </p>
 
-### Camada 1 — Conhecimento curado (estático)
+| Skill | Função | Recursos principais |
+|---|---|---|
+| `arc-cases` | Seleção e documentação de cases, classificação Aderente ou Viável em projeto | Metodologia completa, construção e sustentação, impacto x esforço, antipadrões |
+| `smith-prompt` | Modos Assistente e Detalhado, Prompt-Base, caixas copiáveis, skills do agente criado | Schema, ForgeProtocol, limites por plataforma, guia de skills, exemplos |
+| `copilot-chat` | Agentes para Copilot Basic | Capacidades por nível (Basic e Premium), fatos voláteis |
+| `copilot-m365-agent-builder` | Agent Builder, manual ou assistido | Campos e limites, briefing da aba Descrever, passo a passo |
+| `copilot-m365-toolkit` | Agentes declarativos em código | Manifestos, capabilities, skills, MCP, provision |
+| `copilot-studio` | Copilot Studio | Harnesses, ferramentas, pipeline de dados, Copilot Credits |
+| `copilot-notebooks` | Copilot Notebooks | Instruções, referências recomendadas, estrutura |
+| `documentacao` | Discovery e Guia de Criação em .docx | Modelos, regras de formatação, adaptação por plataforma |
 
-Bases metodológicas autorais publicadas via GitHub Pages, consumidas via WebSearch capability.
+### Padrões das skills
 
-| URL | Conteúdo |
-|---|---|
-| [ForgeProtocol](https://yan-azevedo.github.io/Arc.Smith/ForgeProtocol) | Engenharia de prompt — estrutura JSON, parâmetros, boas práticas |
-| [SolutionKnowledge](https://yan-azevedo.github.io/Arc.Smith/SolutionKnowledge) | Metodologia completa de construção de soluções de IA |
+- `SKILL.md` com front matter YAML (`name` igual à pasta e `description` **entre aspas**) e seções Objetivo, Quando usar, Regra absoluta, Fluxo, Regras e Recursos.
+- Regras de comportamento ficam só no `SKILL.md`; os `references/` trazem conteúdo descritivo.
+- Cada skill de plataforma tem `references/fatos-volateis.md`, com fonte, data de verificação e prazo de revalidação.
+- Limites do preview: 8 skills, 350 arquivos, profundidade 3, pacote de 10 MB, `SKILL.md` com menos de 20.000 caracteres.
 
-### Camada 2 — Retrieval dinâmico (externo)
+### Fatos voláteis e atualização
 
-Microsoft Learn MCP Server — acesso em tempo real à documentação oficial Microsoft.
-
-### Camada 3 — Grounding nativo (tenant)
-
-Acesso direto ao contexto do usuário via capabilities nativas: OneDrive, SharePoint, Teams, Email.
+Fatos que mudam rápido (limites, licenças, status de preview) ficam nas tabelas `fatos-volateis.md`. O método de revisão está em `docs/metodo-atualizacao.md` e o prompt reutilizável em `docs/prompts/revisao-fatos-volateis.md`.
 
 ---
 
 ## Módulos operacionais
 
-### Arc — Documentação de Cases
+### Arc — Seleção e Documentação de Cases
 
-Interpreta transcrições de conversas com stakeholders, identifica cases, estrutura no template institucional e classifica complexidade (Baixa 🟢 / Média 🟡 / Alta 🔴 / Projeto 💼).
+Interpreta transcrições e identifica cases. Com um case, documenta direto; com vários, gera o relatório de seleção e, depois da aprovação do cliente, documenta o escolhido. O case completo traz Apresentador e Área, Caso apresentado, Dor, Objetivo, O que resolve, Impacto, Valor e a classificação: **Aderente** (complexidade de construção e de sustentação, Baixa, Média ou Alta) ou **Viável em projeto**.
 
-### Smith — Engenharia de Prompt
+### Smith — Criação de Agentes
 
-Gera Prompt-Base estruturado em JSON. Cada mensagem é tratada como edição incremental.
+O primeiro passo é a **verificação de recursos** no Microsoft Learn (o que o nível e a plataforma permitem hoje, com fonte e data) e a escolha do modo, com recomendação: **Assistente** (entrevista ponto a ponto e briefing único para o Agent Builder, Copilot Basic e Premium) ou **Detalhado** (camada por camada no Agent Builder manual, Agents Toolkit, Copilot Studio e Copilot Notebooks). Quando a verificação confirmar suporte, o Smith também cria as skills do agente.
 
-**Schema do output:**
+Gera o Prompt-Base em JSON, entregue em caixa copiável markdown:
+
 ```json
 {
   "Parameters": {
-    "Temperature": "[0.0–1.0]",
-    "Goal": "[Objetivo detalhado]",
-    "Tone": "[Tom]",
-    "Format": "[Formato]",
-    "Use Case": "[Cenário]",
-    "Context": "[Contexto]",
-    "Instructions": "[Diretrizes]",
-    "Output": "[Formato de saída do agente criado]"
+    "Goal": "",
+    "Context": "",
+    "Instructions": "",
+    "Tone": "",
+    "Format": "",
+    "Use Case": "",
+    "Output": ""
   }
 }
 ```
 
-**Campos apresentados separadamente em texto na primeira resposta:**
-- Nome do Agente
-- Título resumido
-- Descrição
+- Ordem fixa dos parâmetros; regras em `Instructions`, uma por linha; sem `\n` nos valores.
+- `Temperature` saiu na 2.0: não é configurável em agentes (só existe na ferramenta de Prompt do Copilot Studio).
+- Limite de 8.000 caracteres contando o bloco inteiro.
+- No modo Detalhado, a primeira entrega são as caixas de Nome do Agente, Título resumido e Descrição, mais a pergunta do Output; no Assistente, tudo vai numa única caixa.
 
 ### Code Interpreter
 
-Python em sandbox para validação de JSONs, análise de planilhas (CSV/TSV) e geração de artefatos.
+Python em sandbox para análise de dados, visualizações e geração dos `.docx` de documentação.
 
-**Limitação conhecida:** Arquivos `.xlsx` e `.docx` apresentam bug em Declarative Agents (reportado desde nov/2025). Workaround: converter para CSV antes de anexar.
+**Limitação conhecida:** a leitura de `.xlsx` e `.docx` pode falhar em Declarative Agents. Workaround: converter para CSV ou colar o conteúdo.
 
 ---
 
@@ -160,19 +159,23 @@ Python em sandbox para validação de JSONs, análise de planilhas (CSV/TSV) e g
 
 | Comando | Efeito |
 |---|---|
-| `encerrar` | Reseta o módulo Smith, retornando Prompt-Base zerado |
+| `encerrar` | Reseta o módulo Smith, retornando o Prompt-Base vazio |
 | `novo case` | Inicia novo fluxo no módulo Arc, descartando contexto anterior |
+| `gerar discovery` | Gera a Seleção de Cases ou o Documento do Case, conforme o momento (skill documentacao) |
+| `gerar entrega` | Gera o Guia de Criação do Agente (skill documentacao) |
 
 ---
 
-## Identificação de módulo ativo
+## Roteamento
 
-| Input do usuário | Módulo ativado |
+| Input do usuário | Skill |
 |---|---|
-| Texto de reunião, transcrição ou anotações | Arc |
-| Instruções de agente ou solicitação de JSON | Smith |
+| Texto de reunião, transcrição ou anotações | arc-cases |
+| Instruções, Prompt-Base, nome ou descrição de agente | smith-prompt |
+| Plataforma de destino definida | Skill da plataforma |
+| Documento de cases ou guia de criação | documentacao |
 | Arquivo de dados ou pedido de análise | Code Interpreter |
-| Ambiguidade | Pergunta ao usuário qual módulo usar |
+| Ambiguidade | Pergunta ao usuário qual ação executar |
 
 ---
 
@@ -182,51 +185,42 @@ Python em sandbox para validação de JSONs, análise de planilhas (CSV/TSV) e g
 
 | Tipo de mudança | Incremento |
 |---|---|
-| Adição de capability ou feature maior | MINOR ou MAJOR |
-| Ajuste de instruções ou configuração | PATCH |
+| Mudança de arquitetura ou de fonte de conhecimento | MAJOR |
+| Adição de capability, skill ou feature | MINOR |
+| Ajuste de instruções, skills ou configuração | PATCH |
 | Correção de bug | PATCH |
 
 ### Procedimento de Provision
 
-1. Editar arquivos necessários
+1. Editar os arquivos necessários
 2. Incrementar `version` no `manifest.json`
-3. Executar **Provision** pelo painel Lifecycle do M365 Agents Toolkit
-4. Validar funcionamento no Copilot M365
+3. Rodar `atk validate` e conferir o YAML dos `SKILL.md` (o validate não detecta YAML inválido)
+4. Executar **Provision** pelo painel Lifecycle do M365 Agents Toolkit, primeiro no ambiente `local`
+5. Validar o funcionamento no Copilot M365
 
-> **Importante:** Toda mudança requer incremento de versão. O M365 rejeita Provisions com versão igual ou inferior à existente no tenant.
+> **Importante:** sem incrementar a versão, o Provision pode manter o build anterior sem avisar.
 
 ---
 
 ## Pipeline de atualização do conhecimento
 
-Knowledge sources publicadas via GitHub Pages atualizam **em tempo real** — sem necessidade de re-provisionamento.
+Na 2.0 o conhecimento está no pacote: toda mudança em uma skill exige incremento de versão e novo Provision.
 
 ```
-Editar .md em docs/  →  git push  →  GitHub Pages rebuild (1-2min)  →  ArcSmith consome versão atualizada
+Editar skills/  →  incrementar version  →  atk validate  →  Provision  →  ArcSmith usa a nova versão
 ```
+
+Na 1.x, o conhecimento vinha do GitHub Pages e atualizava sem re-provisionar.
 
 ---
 
 ## Pré-requisitos de desenvolvimento
 
 - **Node.js** versões 18, 20 ou 22
-- **Microsoft 365 Agents Toolkit** — VS Code extension 5.0.0+ (ou CLI equivalente)
-- **Licença Microsoft 365 Copilot**
-- **Conta Microsoft 365** com permissões de desenvolvimento
-
----
-
-## Execução local
-
-### Preview no Copilot
-
-1. Abra o projeto no VS Code
-2. Selecione o ícone do Microsoft 365 Agents Toolkit
-3. Em **Account**, faça login com a conta Microsoft 365
-4. No dropdown de launch, selecione **Preview Local in Copilot (Edge)** ou **(Chrome)**
-5. O ArcSmith abre no Copilot conectado ao tenant
-
-> **Nota:** Declarative Agents não suportam debug local tradicional (`localhost`). O Preview Local executa diretamente no tenant.
+- **Microsoft 365 Agents Toolkit** — VS Code extension ou CLI (`atk` 1.1.18 ou superior)
+- **Licença Microsoft 365 Copilot** e tenant no **Microsoft Frontier Program**
+- Variável `TEAMSFX_AGENT_SKILLS=true` definida antes de abrir o VS Code
+- Permissão de upload de aplicativos personalizados no tenant
 
 ---
 
@@ -245,42 +239,29 @@ O Microsoft Learn MCP está configurado em `.vscode/mcp.json`:
 }
 ```
 
-Ferramentas expostas via `ai-plugin.json`:
-- `microsoft_docs_search` — busca semântica
-- `microsoft_docs_fetch` — recuperação de páginas completas
-
 ---
 
 ## Limitações conhecidas
 
 | Limitação | Status | Workaround |
 |---|---|---|
-| Leitura nativa de `.xlsx` e `.docx` falha no Code Interpreter | Bug Microsoft (nov/2025) | Converter para CSV antes de anexar |
-| Embedded Knowledge não aceita `.md` | Limitação plataforma | Usar GitHub Pages + WebSearch capability |
-| Instruções limitadas a 8000 caracteres | Limitação Toolkit | Distribuir conhecimento entre instructions + knowledge sources |
-| WebSearch limitado a 4 URLs | Limitação plataforma | Consolidar conteúdo em documentos maiores |
+| Leitura nativa de `.xlsx` e `.docx` falha no Code Interpreter | Limitação de plataforma | Converter para CSV antes de anexar |
+| Skills e Embedded Knowledge não podem ser combinados | Preview (suporte planejado) | Conhecimento como recursos das skills |
+| Instruções limitadas a 8000 caracteres | Limite de plataforma | Core enxuto e detalhes nas skills |
+| Custom Skills em preview | Frontier Program | Validar no ambiente `local` antes do `dev` |
+| `atk validate` não valida o YAML dos `SKILL.md` | Ferramenta | Descriptions entre aspas e checagem com parser YAML |
 
 ---
 
-## Extensões suportadas (pontos de evolução futura)
+## Espelho em inglês
 
-- Conversation starters
-- Web content / WebSearch (em uso)
-- OneDrive e SharePoint (em uso)
-- Microsoft Copilot connectors (Graph Connectors)
-- API plugins customizados
+A pasta `Arc.Smith-EN/` na raiz do repositório traz a tradução do `instruction.txt` e das skills, com os mesmos nomes de pastas e identificadores. Ela não é provisionada.
 
 ---
 
 ## Distribuição
 
-### Tenant próprio (modo dev)
-
-Usuários do mesmo tenant podem receber o agente via compartilhamento direto no Microsoft 365 Agents Toolkit (Lifecycle → Compartilhar).
-
-### Múltiplos tenants (futuro)
-
-Publicação na Microsoft Marketplace ou Microsoft 365 Admin Center exige aprovação adicional e revisão técnica completa.
+O ArcSmith é de uso exclusivo do autor: é provisionado apenas no tenant do autor e não é compartilhado nem publicado.
 
 ---
 
@@ -288,14 +269,17 @@ Publicação na Microsoft Marketplace ou Microsoft 365 Admin Center exige aprova
 
 ```
 Microsoft 365 Copilot
-    └── Declarative Agent (Schema v1.7)
-        ├── Instructions (≤8000 chars)
+    └── Declarative Agent (Schema v1.9)
+        ├── Core (instruction.txt, ≤8000 chars)
+        ├── Custom Skills (8)
+        │   ├── arc-cases · smith-prompt · documentacao
+        │   └── copilot-chat · copilot-m365-agent-builder · copilot-m365-toolkit · copilot-studio · copilot-notebooks
         ├── Capabilities
         │   ├── CodeInterpreter
-        │   ├── WebSearch (GitHub Pages)
         │   ├── OneDriveAndSharePoint
         │   ├── TeamsMessages
-        │   └── Email
+        │   ├── Email
+        │   └── EmailActions
         ├── Actions
         │   └── ai-plugin → Microsoft Learn MCP
         └── Behavior Overrides
@@ -309,7 +293,7 @@ Microsoft 365 Copilot
 
 **Desenvolvido por Yan Azevedo**
 
-Projeto autoral fundamentado em metodologia própria construída a partir de prática profissional contínua. Consulte [LICENSE.md](../LICENSE.md) para termos de uso (CC BY-NC-ND 4.0).
+Projeto autoral fundamentado em metodologia própria construída a partir de prática profissional contínua. Projeto proprietário, de uso exclusivo do autor. Consulte [LICENSE.md](../LICENSE.md).
 
 ---
 

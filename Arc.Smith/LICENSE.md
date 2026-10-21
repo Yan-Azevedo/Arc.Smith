@@ -2,98 +2,48 @@
 
 **Copyright © 2026 Yan Azevedo. Todos os direitos reservados.**
 
-Este projeto, incluindo o código do agente, instruções, metodologia, bases de conhecimento (ForgeProtocol e SolutionKnowledge), assets visuais e documentação, está licenciado sob:
+O ArcSmith é um software e conteúdo **proprietário**, mantido em repositório privado e de **uso exclusivo do autor**. Nenhuma licença de uso, cópia, modificação ou distribuição é concedida a terceiros, de forma expressa ou implícita.
 
-## Creative Commons Atribuição-NãoComercial-SemDerivações 4.0 Internacional (CC BY-NC-ND 4.0)
-
----
-
-## O que esta licença permite
-
-✅ **Compartilhar** — copiar e redistribuir o material em qualquer suporte ou formato, desde que:
-
-- A autoria seja explicitamente atribuída a **Yan Azevedo**
-- Seja fornecido link para esta licença
-- Seja indicado se foram feitas alterações ao material original
+Até a versão 1.x o projeto foi distribuído sob Creative Commons BY-NC-ND 4.0. A partir da versão 2.0.0 essa licença deixa de valer para o repositório e para todo o conteúdo novo ou alterado.
 
 ---
 
-## O que esta licença NÃO permite
-
-❌ **Uso comercial** — você não pode usar este material para fins comerciais, incluindo:
-
-- Venda de serviços baseados nesta metodologia
-- Cobrança por consultoria que utilize este material como base
-- Incorporação em produtos comerciais
-- Uso em treinamentos remunerados
-
-❌ **Derivações** — você não pode distribuir versões modificadas, transformadas ou construídas sobre este material, incluindo:
-
-- Forks com alterações estruturais publicados
-- Republicação parcial ou total com modificações
-- Adaptações que sejam disponibilizadas publicamente
-- Traduções publicadas sem autorização expressa
-
-❌ **Restrições adicionais** — você não pode aplicar termos jurídicos ou medidas tecnológicas que impeçam outras pessoas de exercer os direitos permitidos pela licença.
-
----
-
-## Sobre o conteúdo protegido
+## Conteúdo protegido
 
 Todos os componentes deste repositório são propriedade intelectual de **Yan Azevedo**:
 
 ### Código e arquitetura
 - Estrutura do Declarative Agent (`declarativeAgent.json`, `manifest.json`)
-- Instruções operacionais (`instruction.txt`)
-- Configuração do MCP (`ai-plugin.json`)
+- Core de orquestração (`instruction.txt`)
+- Custom Skills (`appPackage/skills/`) e o espelho em inglês (`Arc.Smith-EN/`)
+- Configuração do MCP (`ai-plugin.json`, `mcp-tools.json`)
 - Pipeline de integração com Microsoft 365 Copilot
 
 ### Metodologia autoral
-- **ForgeProtocol** — metodologia de engenharia de prompt
-- **SolutionKnowledge** — metodologia completa de construção de soluções de IA em workshops de adoção corporativa
-- Frameworks, classificações, critérios e templates desenvolvidos
-- Estrutura conceitual dos módulos Arc e Smith
+- **ForgeProtocol** — metodologia de engenharia de prompt e padrão do Prompt-Base (skill `smith-prompt`)
+- **Metodologia de construção de soluções de IA** — identificação, documentação, classificação e priorização de cases (skill `arc-cases`)
+- Modelos de documentação de discovery e de entrega (skill `documentacao`)
+- Frameworks, classificações, critérios e estrutura conceitual dos módulos Arc e Smith
 
 ### Identidade visual
 - Logo e personagem ArcSmith
 - Paleta de cores e identidade visual
 - Assets gráficos do repositório
 
----
-
-## Uso permitido sem autorização
-
-As seguintes ações são permitidas livremente, desde que respeitada a atribuição:
-
-- **Leitura e estudo** do material para aprendizado pessoal
-- **Citação em artigos, posts ou apresentações** com atribuição explícita
-- **Referência acadêmica** com créditos completos
-- **Inspiração conceitual** para projetos próprios não publicados como derivações
+### Histórico
+- Arquivos da versão 1.x em `docs/`, mantidos como registro da evolução do projeto
 
 ---
 
-## Uso que requer autorização expressa
+## Uso não autorizado
 
-Para qualquer uso fora do escopo permitido acima, é obrigatório obter **autorização prévia e por escrito** do autor:
+Sem autorização prévia e por escrito do autor, é proibido:
 
-- Uso comercial em qualquer forma
-- Republicação total ou parcial com modificações
-- Incorporação em produtos, serviços ou metodologias derivadas
-- Tradução para outros idiomas com distribuição pública
-- Treinamento de modelos de IA usando este material como base
-
----
-
-## Atribuição obrigatória
-
-Em qualquer uso permitido, a atribuição deve ser feita da seguinte forma:
-
-```
-ArcSmith — Declarative Agent para Microsoft 365 Copilot
-Desenvolvido por Yan Azevedo
-Repositório: https://github.com/Yan-Azevedo/Arc.Smith
-Licença: CC BY-NC-ND 4.0
-```
+- Copiar, reproduzir ou redistribuir o material, total ou parcialmente
+- Publicar, republicar ou disponibilizar o material a terceiros
+- Modificar, adaptar, traduzir ou criar obras derivadas para uso de terceiros
+- Usar o material para fins comerciais, em produtos, serviços ou treinamentos
+- Usar o material para treinar ou ajustar modelos de IA
 
 ---
 
@@ -104,26 +54,6 @@ Este material é fornecido "como está", sem garantias de qualquer natureza, exp
 - Resultados obtidos pelo uso ou interpretação desta metodologia
 - Danos diretos ou indiretos decorrentes do uso do material
 - Compatibilidade com versões futuras do Microsoft 365 Copilot ou ferramentas relacionadas
-- Continuidade ou disponibilidade do projeto
-
----
-
-## Texto completo da licença
-
-O texto completo da licença Creative Commons Atribuição-NãoComercial-SemDerivações 4.0 Internacional está disponível em:
-
-**https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.pt**
-
-Resumo em linguagem acessível:
-**https://creativecommons.org/licenses/by-nc-nd/4.0/deed.pt-br**
-
----
-
-## Contato para autorizações
-
-Para solicitações de uso fora dos termos desta licença, entre em contato com o autor através do repositório oficial:
-
-**https://github.com/Yan-Azevedo/Arc.Smith**
 
 ---
 

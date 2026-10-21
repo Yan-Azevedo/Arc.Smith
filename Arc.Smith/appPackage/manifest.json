@@ -1,7 +1,7 @@
 {
     "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.26/MicrosoftTeams.schema.json",
     "manifestVersion": "1.26",
-    "version": "1.7.5",
+    "version": "2.0.0",
     "id": "${{TEAMS_APP_ID}}",
     "developer": {
         "name": "Yan Azevedo",
@@ -15,11 +15,11 @@
     },
     "name": {
         "short": "Arc.Smith",
-        "full": "Full name for Arc.Smith"
+        "full": "ArcSmith: soluções de IA para Microsoft Copilot"
     },
     "description": {
-        "short": "Short description for Arc.Smith",
-        "full": "Full description for Arc.Smith"
+        "short": "Cases, prompts e guias para agentes do Microsoft Copilot",
+        "full": "Agente para desenvolvimento estruturado de soluções de IA no ecossistema Microsoft Copilot. Documenta e prioriza cases a partir de reuniões, cria instruções de agentes com engenharia de prompt, orienta a criação no Copilot Chat, Agent Builder, Agents Toolkit, Copilot Studio e Copilot Notebooks, e gera a documentação de entrega."
     },
     "accentColor": "#FFFFFF",
     "supportsChannelFeatures": "tier1",
